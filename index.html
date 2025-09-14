@@ -7,11 +7,12 @@
   body { font-family: Arial, sans-serif; margin: 25px; background: #f5f8fa; }
   .quiz-container { max-width: 700px; margin: auto; background: white; padding: 20px 30px; border-radius: 8px; box-shadow: 0 4px 18px rgba(0,0,0,0.12); }
   h1 { text-align: center; color: #1a237e; }
+  .scoreboard { font-weight: 600; font-size: 16px; text-align: center; margin-bottom: 30px; }
   .question-block { margin-bottom: 36px; padding: 18px 16px; background: #f9fafc; border-radius: 6px; border-bottom: 1px solid #e3e3e3; }
   .year { font-size: 0.85em; color: #888; font-style: italic; margin-bottom: 6px; }
   .question { font-size: 1.1em; font-weight: 600; color: #374050; }
   .options label { display: block; margin: 6px 0 6px 20px; cursor: pointer; color: #444; }
-  .answer { font-weight: 600; margin-top: 8px; display: none; }
+  .answer { font-weight: 600; margin-top: 8px; }
   .correct { color: #307a3a; }
   .incorrect { color: #d71a1a; }
   .video { margin-top: 12px; }
@@ -19,83 +20,86 @@
 </head>
 <body>
 <div class="quiz-container">
-<h1>Class 10 Quadratic Equations - Video MCQ Quiz</h1>
+  <h1>Class 10 Quadratic Equations - Video MCQ Quiz</h1>
+  <div class="scoreboard">
+    Correct Answers: <span id="correctCount">0</span> | Incorrect Answers: <span id="incorrectCount">0</span>
+  </div>
 
-<!-- Example 2(i) -->
-<div class="question-block">
-  <div class="year">(00:42 Example 2(i)) (Appeared in CBSE 2023)</div>
-  <div class="question">1. Is (2x^2 + 3x + 1 = 0) a quadratic equation?</div>
-  <div class="options">
-    <label><input type="radio" name="q1" onclick="showAnswer('answer1','A',this)"> A) Yes</label>
-    <label><input type="radio" name="q1" onclick="showAnswer('answer1','A',this)"> B) No</label>
+  <!-- Example 2(i) -->
+  <div class="question-block">
+    <div class="year">(00:42 Example 2(i)) (Appeared in CBSE 2023)</div>
+    <div class="question">1. Is \(2x^2 + 3x + 1 = 0\) a quadratic equation?</div>
+    <div class="options">
+      <label><input type="radio" name="q1" onclick="showAnswer('answer1','A',this)"> A) Yes</label>
+      <label><input type="radio" name="q1" onclick="showAnswer('answer1','A',this)"> B) No</label>
+    </div>
+    <div id="answer1" class="answer"></div>
+    <div class="video">
+      <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=42" title="Example 2(i) quadratic check" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
-  <div id="answer1" class="answer"></div>
-  <div class="video">
-    <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=42" title="Example 2(i) quadratic check" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
 
-<!-- Example 2(ii) -->
-<div class="question-block">
-  <div class="year">(02:52 Example 2(ii)) (Appeared in CBSE 2023)</div>
-  <div class="question">2. Is ((x+1)(x-2) = x^2 - x - 2 = 0) a quadratic equation?</div>
-  <div class="options">
-    <label><input type="radio" name="q2" onclick="showAnswer('answer2','A',this)"> A) Yes</label>
-    <label><input type="radio" name="q2" onclick="showAnswer('answer2','A',this)"> B) No</label>
+  <!-- Example 2(ii) -->
+  <div class="question-block">
+    <div class="year">(02:52 Example 2(ii)) (Appeared in CBSE 2023)</div>
+    <div class="question">2. Is \((x+1)(x-2) = x^2 - x - 2 = 0\) a quadratic equation?</div>
+    <div class="options">
+      <label><input type="radio" name="q2" onclick="showAnswer('answer2','A',this)"> A) Yes</label>
+      <label><input type="radio" name="q2" onclick="showAnswer('answer2','A',this)"> B) No</label>
+    </div>
+    <div id="answer2" class="answer"></div>
+    <div class="video">
+      <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=172" title="Example 2(ii) quadratic check" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
-  <div id="answer2" class="answer"></div>
-  <div class="video">
-    <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=172" title="Example 2(ii) quadratic check" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
 
-<!-- Example 3 -->
-<div class="question-block">
-  <div class="year">(07:32 Example 3) (Appeared in CBSE 2024)</div>
-  <div class="question">3. Find the roots of the quadratic equation (x^2 - 3x - 10 = 0).</div>
-  <div class="options">
-    <label><input type="radio" name="q3" onclick="showAnswer('answer3','C',this)"> A) 5 and 2</label>
-    <label><input type="radio" name="q3" onclick="showAnswer('answer3','C',this)"> B) -5 and -2</label>
-    <label><input type="radio" name="q3" onclick="showAnswer('answer3','C',this)"> C) 5 and -2</label>
-    <label><input type="radio" name="q3" onclick="showAnswer('answer3','C',this)"> D) -5 and 2</label>
+  <!-- Example 3 -->
+  <div class="question-block">
+    <div class="year">(07:32 Example 3) (Appeared in CBSE 2024)</div>
+    <div class="question">3. Find the roots of the quadratic equation \(x^2 - 3x - 10 = 0\).</div>
+    <div class="options">
+      <label><input type="radio" name="q3" onclick="showAnswer('answer3','C',this)"> A) 5 and 2</label>
+      <label><input type="radio" name="q3" onclick="showAnswer('answer3','C',this)"> B) -5 and -2</label>
+      <label><input type="radio" name="q3" onclick="showAnswer('answer3','C',this)"> C) 5 and -2</label>
+      <label><input type="radio" name="q3" onclick="showAnswer('answer3','C',this)"> D) -5 and 2</label>
+    </div>
+    <div id="answer3" class="answer"></div>
+    <div class="video">
+      <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=452" title="Example 3 roots" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
-  <div id="answer3" class="answer"></div>
-  <div class="video">
-    <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=452" title="Example 3 roots" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
 
-<!-- Example 4 -->
-<div class="question-block">
-  <div class="year">(09:47 Example 4) (Appeared in CBSE 2025)</div>
-  <div class="question">4. What is the value of (k) so that the quadratic equation (x^2 + (k-1)x + k = 0) will have equal roots?</div>
-  <div class="options">
-    <label><input type="radio" name="q4" onclick="showAnswer('answer4','A',this)"> A) 1</label>
-    <label><input type="radio" name="q4" onclick="showAnswer('answer4','A',this)"> B) -1</label>
-    <label><input type="radio" name="q4" onclick="showAnswer('answer4','A',this)"> C) 0</label>
-    <label><input type="radio" name="q4" onclick="showAnswer('answer4','A',this)"> D) 2</label>
+  <!-- Example 4 -->
+  <div class="question-block">
+    <div class="year">(09:47 Example 4) (Appeared in CBSE 2025)</div>
+    <div class="question">4. What is the value of \(k\) so that the quadratic equation \(x^2 + (k-1)x + k = 0\) will have equal roots?</div>
+    <div class="options">
+      <label><input type="radio" name="q4" onclick="showAnswer('answer4','A',this)"> A) 1</label>
+      <label><input type="radio" name="q4" onclick="showAnswer('answer4','A',this)"> B) -1</label>
+      <label><input type="radio" name="q4" onclick="showAnswer('answer4','A',this)"> C) 0</label>
+      <label><input type="radio" name="q4" onclick="showAnswer('answer4','A',this)"> D) 2</label>
+    </div>
+    <div id="answer4" class="answer"></div>
+    <div class="video">
+      <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=587" title="Example 4 equal roots" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
-  <div id="answer4" class="answer"></div>
-  <div class="video">
-    <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=587" title="Example 4 equal roots" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
 
-<!-- Example 6 -->
-<div class="question-block">
-  <div class="year">(15:19 Example 6) (Appeared in CBSE 2024)</div>
-  <div class="question">5. A prayer hall has a carpet area of 300 m². Its length is one metre more than twice its breadth. What will be the length and breadth?</div>
-  <div class="options">
-    <label><input type="radio" name="q5" onclick="showAnswer('answer5','B',this)"> A) Length = 22 m, Breadth = 7 m</label>
-    <label><input type="radio" name="q5" onclick="showAnswer('answer5','B',this)"> B) Length = 21 m, Breadth = 7 m</label>
-    <label><input type="radio" name="q5" onclick="showAnswer('answer5','B',this)"> C) Length = 20 m, Breadth = 7 m</label>
-    <label><input type="radio" name="q5" onclick="showAnswer('answer5','B',this)"> D) Length = 23 m, Breadth = 7 m</label>
+  <!-- Example 6 -->
+  <div class="question-block">
+    <div class="year">(15:19 Example 6) (Appeared in CBSE 2024)</div>
+    <div class="question">5. A prayer hall has a carpet area of 300 m². Its length is one metre more than twice its breadth. What will be the length and breadth?</div>
+    <div class="options">
+      <label><input type="radio" name="q5" onclick="showAnswer('answer5','B',this)"> A) Length = 22 m, Breadth = 7 m</label>
+      <label><input type="radio" name="q5" onclick="showAnswer('answer5','B',this)"> B) Length = 21 m, Breadth = 7 m</label>
+      <label><input type="radio" name="q5" onclick="showAnswer('answer5','B',this)"> C) Length = 20 m, Breadth = 7 m</label>
+      <label><input type="radio" name="q5" onclick="showAnswer('answer5','B',this)"> D) Length = 23 m, Breadth = 7 m</label>
+    </div>
+    <div id="answer5" class="answer"></div>
+    <div class="video">
+      <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=919" title="Example 6 prayer hall" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
-  <div id="answer5" class="answer"></div>
-  <div class="video">
-    <iframe width="390" height="220" src="https://www.youtube.com/embed/w8bJB4Gq388?start=919" title="Example 6 prayer hall" frameborder="0" allowfullscreen></iframe>
-  </div>
-</div>
 
 </div>
 
