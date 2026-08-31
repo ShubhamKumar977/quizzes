@@ -1,0 +1,68 @@
+{
+  "restaurantName": "test",
+  "tagline": "",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Bruschetta",
+          "description": "toasted baguette with tomato, basil & olive oil",
+          "price": "$6.00"
+        },
+        {
+          "name": "Soup of the Day",
+          "description": "creamy seasonal vegetable soup",
+          "price": "$5.50"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Grilled Chicken Panini",
+          "description": "chicken, mozzarella, pesto, roasted peppers",
+          "price": "$12.00"
+        },
+        {
+          "name": "Veggie Pasta",
+          "description": "penne, zucchini, cherry tomatoes, garlic‑olive sauce",
+          "price": "$11.00"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Chocolate Lava Cake",
+          "description": "warm cake with molten centre, vanilla ice cream",
+          "price": "$7.00"
+        },
+        {
+          "name": "Fruit Parfait",
+          "description": "layered yogurt, fresh berries, granola",
+          "price": "$5.50"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Iced Coffee",
+          "description": "cold brew with milk option",
+          "price": "$3.00"
+        },
+        {
+          "name": "Lemonade",
+          "description": "freshly squeezed lemons, mint",
+          "price": "$2.50"
+        }
+      ]
+    }
+  ],
+  "images": [],
+  "updatedAt": "2026-08-31T09:01:20.535Z"
+}
