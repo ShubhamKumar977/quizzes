@@ -254,6 +254,16 @@
 <body>
 <div id="app" class="ticket"></div>
 
+<!--
+  Optional, LOCAL-ONLY file for testing on your machine without committing
+  real secrets. Create local-config.js next to this file (it's gitignored,
+  see local-config.example.js for the format) with your real Groq key and
+  GitHub token. If that file doesn't exist, this line just 404s quietly and
+  the placeholders below stay as-is — harmless, but Groq/GitHub calls won't
+  work until you either add local-config.js or view the real deployed site.
+-->
+<script src="local-config.js"></script>
+
 <script>
 /* =========================================================================
    CONFIG — fill these in before deploying. Everything runs client-side,
@@ -277,13 +287,6 @@ const CONFIG = {
   GITHUB_BRANCH: "main",                                  // match your repo's default branch
 
   MENUS_PATH:    "menus", // folder in the repo where menu JSON files live — leave as-is unless you have a reason to change it
-
-  // GitHub Pages serves a normal repo at username.github.io/REPO_NAME/ — not
-  // at the domain root — so the app needs to know that prefix to route
-  // correctly and build working links. Leave this as "/quizzes" for this
-  // repo. If you ever move to a custom domain or a username.github.io ROOT
-  // repo (one literally named "username.github.io"), change this to "".
-  BASE_PATH:     "/quizzes",
 };
 
 /* =========================================================================
@@ -398,40 +401,35 @@ async function groqChat(messages, { jsonOnly=false } = {}){
 }
 
 /* =========================================================================
-   Router
+   Router — hash-based on purpose. The part after "#" never reaches the
+   server, so GitHub Pages always just serves index.html regardless of the
+   URL, however it's configured. That means deep links like
+   /quizzes/#/customer-name can never 404, and no 404.html trick or
+   BASE_PATH bookkeeping is needed at all.
+   Scheme:  ""            -> creator (new menu)
+            "#/edit/slug" -> creator (editing existing menu)
+            "#/slug"      -> published menu view
    ========================================================================= */
-function withBase(path){
-  // Joins CONFIG.BASE_PATH + path without producing a double slash.
-  const base = (CONFIG.BASE_PATH || '').replace(/\/$/, '');
-  const p = path.startsWith('/') ? path : '/' + path;
-  return (base + p) || '/';
+function parseHash(){
+  const raw = (location.hash || '').replace(/^#\/?/, '');
+  if (!raw) return { mode: 'create', slug: null };
+  if (raw.startsWith('edit/')){
+    return { mode: 'edit', slug: decodeURIComponent(raw.slice(5)) };
+  }
+  return { mode: 'view', slug: decodeURIComponent(raw) };
 }
 
-function currentSlugFromPath(){
-  let pathname = location.pathname;
-  const base = (CONFIG.BASE_PATH || '').replace(/\/$/, '');
-  if (base && pathname.startsWith(base)){
-    pathname = pathname.slice(base.length);
-  }
-  const parts = pathname.split('/').filter(Boolean);
-  if (parts.length === 0) return null;
-  // ignore a trailing index.html / 404.html
-  const last = parts[parts.length - 1];
-  if (/\.html?$/i.test(last)) return null;
-  return decodeURIComponent(last);
-}
+function goToCreate(){ location.hash = '#/'; }
+function goToEdit(slug){ location.hash = `#/edit/${encodeURIComponent(slug)}`; }
+function goToView(slug){ location.hash = `#/${encodeURIComponent(slug)}`; }
 
 function boot(){
-  const slug = currentSlugFromPath();
-  const editParam = new URLSearchParams(location.search).get('edit');
-  if (slug){
-    renderMenuView(slug);
-  } else if (editParam){
-    renderCreator(editParam);
-  } else {
-    renderCreator(null);
-  }
+  const { mode, slug } = parseHash();
+  if (mode === 'view') renderMenuView(slug);
+  else if (mode === 'edit') renderCreator(slug);
+  else renderCreator(null);
 }
+window.addEventListener('hashchange', boot);
 
 /* =========================================================================
    Menu view (public page at /customer-name)
@@ -463,7 +461,7 @@ function stateMsg(text, linkText){
   const d = el('div', 'state-msg');
   d.appendChild(el('p', null, text));
   const a = el('a', null, linkText);
-  a.href = withBase('/');
+  a.href = '#/';
   a.style.display = 'inline-block';
   a.style.marginTop = '10px';
   d.appendChild(a);
@@ -518,7 +516,7 @@ function renderMenuData(data, slug){
   });
 
   const editBtn = el('button', 'edit-fab', 'Update this menu');
-  editBtn.onclick = () => { location.href = withBase(`/?edit=${encodeURIComponent(slug)}`); };
+  editBtn.onclick = () => { goToEdit(slug); };
   body.appendChild(editBtn);
 
   app.appendChild(body);
@@ -751,7 +749,7 @@ Use "" for any field you don't have. Include every item that was discussed.` },
       state.sha = result.content.sha;
       addNote('Published.');
       addMessage('bot', `Done — your menu is live. Redirecting you to it now.`);
-      setTimeout(() => { location.href = withBase(`/${state.slug}`); }, 900);
+      setTimeout(() => { goToView(state.slug); }, 900);
     } catch (e){
       addMessage('bot', `Couldn't publish: ${e.message}`);
       setBusy(false);
@@ -771,6 +769,3 @@ boot();
 </script>
 </body>
 </html>
-
-
-
