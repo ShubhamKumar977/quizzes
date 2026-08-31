@@ -1,0 +1,88 @@
+{
+  "restaurantName": "SK Cafe",
+  "tagline": "Your cozy corner for coffee & treats.",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Avocado Toast",
+          "description": "Smashed avocado on sourdough, topped with chili flakes",
+          "price": "$6.50"
+        },
+        {
+          "name": "Bruschetta",
+          "description": "Grilled baguette with tomato‑basil topping",
+          "price": "$5.00"
+        },
+        {
+          "name": "Seasonal Soup",
+          "description": "Chef’s daily soup served with crusty bread",
+          "price": "$4.75"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Grilled Chicken Panini",
+          "description": "Chicken, mozzarella, pesto, sun‑dried tomatoes",
+          "price": "$9.50"
+        },
+        {
+          "name": "Veggie Power Bowl",
+          "description": "Quinoa, roasted veg, hummus, mixed greens",
+          "price": "$8.75"
+        },
+        {
+          "name": "Classic Cheeseburger",
+          "description": "Beef patty, cheddar, lettuce, tomato, fries",
+          "price": "$10.00"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Chocolate Lava Cake",
+          "description": "Warm cake with molten centre, vanilla ice‑cream",
+          "price": "$5.50"
+        },
+        {
+          "name": "Lemon Tart",
+          "description": "Zesty lemon curd in a buttery crust",
+          "price": "$4.75"
+        },
+        {
+          "name": "Cheesecake",
+          "description": "Creamy New York style, berry compote",
+          "price": "$5.00"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Espresso",
+          "description": "Rich, single‑shot coffee",
+          "price": "$2.50"
+        },
+        {
+          "name": "Cold Brew Latte",
+          "description": "Smooth cold brew with oat milk",
+          "price": "$3.75"
+        },
+        {
+          "name": "Fresh Lemonade",
+          "description": "House‑made, lightly sweetened",
+          "price": "$2.80"
+        }
+      ]
+    }
+  ],
+  "images": [],
+  "updatedAt": "2026-08-31T13:25:36.736Z"
+}
