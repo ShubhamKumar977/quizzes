@@ -1,0 +1,73 @@
+{
+  "restaurantName": "Vibe Café",
+  "tagline": "Where Every Sip Sets the Mood",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Avocado Toast",
+          "description": "Smashed avocado, chili flakes, lemon zest",
+          "price": "$6.50"
+        },
+        {
+          "name": "Seasonal Soup",
+          "description": "House‑made, served with crusty bread",
+          "price": "$5.00"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Classic Club Sandwich",
+          "description": "Turkey, bacon, lettuce, tomato, mayo",
+          "price": "$9.75"
+        },
+        {
+          "name": "Veggie Power Bowl",
+          "description": "Quinoa, roasted veggies, hummus, tahini drizzle",
+          "price": "$10.50"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Signature Cold Brew",
+          "description": "Smooth, chocolate‑y finish",
+          "price": "$3.25"
+        },
+        {
+          "name": "Matcha Latte",
+          "description": "Creamy, lightly sweetened",
+          "price": "$4.00"
+        },
+        {
+          "name": "Fresh‑Squeezed Orange Juice",
+          "description": "",
+          "price": "$3.75"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Chocolate Lava Cake",
+          "description": "Warm centre, vanilla ice‑cream",
+          "price": "$6.00"
+        },
+        {
+          "name": "Lemon Cheesecake",
+          "description": "Light, tangy, graham‑crust base",
+          "price": "$5.50"
+        }
+      ]
+    }
+  ],
+  "images": [],
+  "updatedAt": "2026-08-31T13:32:37.303Z"
+}
