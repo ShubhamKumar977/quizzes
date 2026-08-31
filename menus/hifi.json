@@ -1,0 +1,68 @@
+{
+  "restaurantName": "Eagles Nest",
+  "tagline": "Soaring Flavors, Cozy Nest",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Nest Egg Toast",
+          "description": "Avocado, poached egg, chili flakes",
+          "price": "$6.50"
+        },
+        {
+          "name": "Falcon Flatbread",
+          "description": "Tomato, mozzarella, basil",
+          "price": "$7.00"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Eagle’s Roast Chicken",
+          "description": "Herb‑marinated, served with seasonal veg",
+          "price": "$14.95"
+        },
+        {
+          "name": "Mountain Veggie Bowl",
+          "description": "Quinoa, roasted veggies, tahini drizzle",
+          "price": "$12.50"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Skyline Cold Brew",
+          "description": "Smooth, 12 oz",
+          "price": "$3.25"
+        },
+        {
+          "name": "Honey‑Lemon Iced Tea",
+          "description": "Freshly brewed, lightly sweetened",
+          "price": "$3.00"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Nestle’s Cheesecake",
+          "description": "Classic New York style, berry compote",
+          "price": "$5.75"
+        },
+        {
+          "name": "Chocolate Hawk Cake",
+          "description": "Dark chocolate, almond crunch",
+          "price": "$6.00"
+        }
+      ]
+    }
+  ],
+  "images": [],
+  "updatedAt": "2026-08-31T11:06:22.482Z"
+}
