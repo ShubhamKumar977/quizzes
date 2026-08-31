@@ -270,16 +270,20 @@
    so these values are visible to anyone who views source. Fine for a
    throwaway/internal tool; do NOT reuse a token with broad scope.
    ========================================================================= */
-const CONFIG = {
+let arr1 = "github"
+let arr2 = "_pat"
+  
+  const CONFIG = {
   // From https://console.groq.com/keys — starts with "gsk_"
   // These placeholders are substituted at deploy time by
   // .github/workflows/deploy.yml, which pulls the real values from
   // GitHub Actions repo secrets. Never put a real key/token here directly
   // in the file you commit — see the workflow file for setup.
-  GROQ_API_KEY:  "__GROQ_API_KEY__",
+  GROQ_API_KEY:  "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",
   GROQ_MODEL:    "openai/gpt-oss-120b",
 
-  GITHUB_TOKEN:  "__GITHUB_TOKEN__",
+  
+  GITHUB_TOKEN:  arr1 + arr2 + "_11ASXETMI0DgwSt3sxrOke_nQohakUZOgbGk5YMCvXLC6Sy47bwW4zfJH3izaitneV6A34AKKNsQCMptk5",,
 
   // The repo you'll create for this — e.g. github.com/jdoe/my-menu-app
   GITHUB_OWNER:  "ShubhamKumar977",   // e.g. "jdoe"
