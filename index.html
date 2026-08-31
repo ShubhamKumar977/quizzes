@@ -262,14 +262,14 @@
    ========================================================================= */
 const CONFIG = {
   // From https://console.groq.com/keys — starts with "gsk_"
-  GROQ_API_KEY:  "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",
+  // These placeholders are substituted at deploy time by
+  // .github/workflows/deploy.yml, which pulls the real values from
+  // GitHub Actions repo secrets. Never put a real key/token here directly
+  // in the file you commit — see the workflow file for setup.
+  GROQ_API_KEY:  "__GROQ_API_KEY__",
   GROQ_MODEL:    "openai/gpt-oss-120b",
 
-  // From https://github.com/settings/personal-access-tokens/new (fine-grained)
-  // Repository access: "Only select repositories" -> your menu repo
-  // Permissions: Contents -> Read and write
-  // Token starts with "github_pat_"
-  GITHUB_TOKEN:  "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",
+  GITHUB_TOKEN:  "__GITHUB_TOKEN__",
 
   // The repo you'll create for this — e.g. github.com/jdoe/my-menu-app
   GITHUB_OWNER:  "ShubhamKumar977",   // e.g. "jdoe"
