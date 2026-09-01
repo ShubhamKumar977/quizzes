@@ -1,0 +1,171 @@
+{
+  "restaurantName": "Simla Cafe",
+  "tagline": "",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Fried Hot Wings",
+          "description": "",
+          "price": "$5.97",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Fries_from_New_York_Buffalo_Brad%27s_Hot_Wings_on_the_Food_Hall_at_SM_City_Cebu_%282025-01-20%29.jpg/330px-Fries_from_New_York_Buffalo_Brad%27s_Hot_Wings_on_the_Food_Hall_at_SM_City_Cebu_%282025-01-20%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mozzarella Sticks",
+          "description": "",
+          "price": "$4.71",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Mozzarella_sticks_and_tater_tots_poutine.jpg/330px-Mozzarella_sticks_and_tater_tots_poutine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Tex-Mex Beef Nachos",
+          "description": "",
+          "price": "$6.81",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Agricultural_trade_highlights_%28IA_CAT10401061061%29.pdf/page1-330px-Agricultural_trade_highlights_%28IA_CAT10401061061%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Shrimp Poppers",
+          "description": "",
+          "price": "$5.45",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Food_views_in_the_news%3B_a_weekly_service_for_food_editors_of_western_dailies_%28IA_foodviewsinnews1945unit_9%29.pdf/page1-330px-Food_views_in_the_news%3B_a_weekly_service_for_food_editors_of_western_dailies_%28IA_foodviewsinnews1945unit_9%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Scrambled Eggs",
+          "description": "",
+          "price": "$1.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Chilli_Scrambled_Eggs.jpg/330px-Chilli_Scrambled_Eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Main",
+      "items": [
+        {
+          "name": "Classic Burger",
+          "description": "",
+          "price": "$3.04",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Rollin%27_in_the_Dough_Classic_Burger%2C_Shreveport%2C_LA.jpg/330px-Rollin%27_in_the_Dough_Classic_Burger%2C_Shreveport%2C_LA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Cheese Burger",
+          "description": "",
+          "price": "$4.08",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Big_Mac_hamburger.jpg/330px-Big_Mac_hamburger.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Spam Burger",
+          "description": "",
+          "price": "$5.87",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Jef_Nuuyaru_Burger_Eaten.jpg/330px-Jef_Nuuyaru_Burger_Eaten.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Bacon Mushroom Burger",
+          "description": "",
+          "price": "$5.13",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/The_Smokey_-_T_%40_The_Prince_George_2023-12-06.jpg/330px-The_Smokey_-_T_%40_The_Prince_George_2023-12-06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Lamb Burger",
+          "description": "",
+          "price": "$8.06",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Lamb_burger_%2818267254468%29.jpg/330px-Lamb_burger_%2818267254468%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Dessert",
+      "items": [
+        {
+          "name": "Apple Pie",
+          "description": "",
+          "price": "$5.97",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Apple_cake_with_vanilla_ice_cream_2.jpg/330px-Apple_cake_with_vanilla_ice_cream_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Banana Split Sundae",
+          "description": "",
+          "price": "$4.71",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Food_for_thought%3B_%28IA_foodforthought00dear%29.pdf/page1-330px-Food_for_thought%3B_%28IA_foodforthought00dear%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Cheesecake",
+          "description": "",
+          "price": "$6.81",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Strawberry_Cheesecake%2C_2021.jpg/330px-Strawberry_Cheesecake%2C_2021.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Blueberry Cheesecake",
+          "description": "",
+          "price": "$7.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Blueberry_cheesecake_tarts_in_foil_forms.jpg/330px-Blueberry_cheesecake_tarts_in_foil_forms.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Chocolate Mousse",
+          "description": "",
+          "price": "$5.45",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Dessert_with_mandarines_and_white_chocolate_mousse%2C_Hannover.jpg/330px-Dessert_with_mandarines_and_white_chocolate_mousse%2C_Hannover.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Chocolate Pancakes",
+          "description": "",
+          "price": "$3.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Chocolate_%26_pear_pancakes_-_Caf%C3%A9_des_Couleurs_2025-04-03.jpg/330px-Chocolate_%26_pear_pancakes_-_Caf%C3%A9_des_Couleurs_2025-04-03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Waffles",
+          "description": "",
+          "price": "$3.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg/330px-Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Beverages",
+      "items": [
+        {
+          "name": "Vanilla Shake",
+          "description": "",
+          "price": "$3.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Vanilla_Bean_Dream_Shake_%283850165121%29.jpg/330px-Vanilla_Bean_Dream_Shake_%283850165121%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Chocolate Shake",
+          "description": "",
+          "price": "$3.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Avocado_Chocolate_Shake%2C_July_2025.jpg/330px-Avocado_Chocolate_Shake%2C_July_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Strawberry Shake",
+          "description": "",
+          "price": "$3.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Strawberry_milk_shake_%28cropped%29.jpg/330px-Strawberry_milk_shake_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Nutella Shake",
+          "description": "",
+          "price": "$3.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Nutella_Almond_Milkshake_-_Home_-_Chandigarh_-_India_-_0007.jpg/330px-Nutella_Almond_Milkshake_-_Home_-_Chandigarh_-_India_-_0007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Coffee",
+          "description": "",
+          "price": "$2.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/330px-A_small_cup_of_coffee.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Tea",
+          "description": "",
+          "price": "$1.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Zhu-Ye-Qing-Tea-03.jpg/330px-Zhu-Ye-Qing-Tea-03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Hot Milk",
+          "description": "",
+          "price": "$1.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Oat_porridge_in_Ghana.jpg/330px-Oat_porridge_in_Ghana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-01T04:43:58.725Z"
+}
