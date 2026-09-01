@@ -404,7 +404,7 @@ const gh = {
     const json = await res.json();
     return { sha: json.sha, data: JSON.parse(b64DecodeUnicode(json.content)) };
   },
-  async putFile(slug, dataObj, sha, message){
+  async putFile(slug, dataObj, sha, message, _retried){
     const body = {
       message: message || `Update menu: ${slug}`,
       content: b64EncodeUnicode(JSON.stringify(dataObj, null, 2)),
@@ -416,6 +416,13 @@ const gh = {
       headers: { ...this.headers(), 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
+    if (res.status === 409 && !_retried){
+      // Our known sha is stale (an earlier attempt likely succeeded server-side
+      // even if the response didn't come back cleanly, or another write beat
+      // us to it). Refetch the current sha and retry exactly once.
+      const fresh = await this.getFile(slug);
+      return this.putFile(slug, dataObj, fresh ? fresh.sha : null, message, true);
+    }
     if (!res.ok){
       const err = await res.text();
       throw new Error(`GitHub write failed (${res.status}): ${err}`);
@@ -848,11 +855,16 @@ matches an item they've mentioned, or ask which item it's for if unclear).`;
         state.displayName = text;
         if (existing){ state.sha = existing.sha; }
         state.phase = 'chatting';
-        state.messages.push({ role: 'system', content: SYSTEM_PROMPT });
         if (existing){
-          state.messages.push({ role: 'system', content: `Existing menu data to edit: ${JSON.stringify(existing.data)}` });
+          state.messages.push({ role: 'system', content: `${SYSTEM_PROMPT}
+
+The user is editing an EXISTING published menu, not starting a new one — do not ask for the
+restaurant name, tagline, or any item already present below unless the user wants to change it.
+Here is the current menu as JSON, already confirmed and live:
+${JSON.stringify(existing.data)}` });
           addMessage('bot', `Loaded the current menu for "${text}". What would you like to change?`);
         } else {
+          state.messages.push({ role: 'system', content: SYSTEM_PROMPT });
           addMessage('bot', `Got it — this will publish at /${slug}. What kind of menu are we building (cafe, restaurant, food truck…) and what's it called?`);
         }
       } catch (e){
