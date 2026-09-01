@@ -206,13 +206,6 @@
   .menu-body{ padding:8px 28px 60px; }
   .menu-name{ font-size:34px; margin-bottom:4px; }
   .menu-tagline{ color:rgba(31,36,33,0.6); font-size:15px; margin-bottom:28px; }
-  .gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(120px,1fr));
-    gap:8px;
-    margin-bottom:32px;
-  }
-  .gallery img{ width:100%; aspect-ratio:1; object-fit:cover; border-radius:var(--radius); }
   .section-block{ margin-bottom:30px; }
   .section-title{
     font-size:13px;
@@ -224,12 +217,20 @@
   }
   .item-row{
     display:flex;
+    align-items:center;
     justify-content:space-between;
-    gap:16px;
+    gap:14px;
     padding:10px 0;
     border-bottom:1px dotted var(--line);
   }
   .item-row:last-child{ border-bottom:none; }
+  .item-thumb{
+    width:48px; height:48px;
+    object-fit:cover;
+    border-radius:var(--radius);
+    border:1px solid var(--line);
+    flex-shrink:0;
+  }
   .item-name{ font-weight:600; font-size:16px; }
   .item-desc{ font-size:13.5px; color:rgba(31,36,33,0.6); margin-top:3px; max-width:420px; }
   .item-price{
@@ -452,16 +453,64 @@ async function groqChat(messages, { jsonOnly=false, model=null } = {}){
 // Reads menu items out of one or more photos using the vision model, and
 // returns plain text (not an image/array payload) so it can safely join the
 // rest of the conversation history, which is sent to the text-only model.
-async function extractMenuFromImages(images, userText){
-  const instruction = (userText ? userText + '\n\n' : '') +
-    `Look at the attached photo(s) of a menu (or menu items) and list everything you can read:
-each item's name, its price if visible, and a short description if visible. Use one line per
-item, plain text, no markdown tables. If a photo isn't a menu or nothing is legible, say so
-plainly instead of guessing.`;
-  const content = [{ type: 'text', text: instruction }];
-  images.forEach(img => content.push({ type: 'image_url', image_url: { url: img.dataUrl } }));
-  return groqChat([{ role: 'user', content }], { jsonOnly: true, model: CONFIG.GROQ_VISION_MODEL });
+// Classifies ONE photo: is it a reference photo of a menu/price list (read it
+// for text, then discard — never shown to customers), or a photo of an
+// actual dish/drink (kept, matched to a menu item by name)?
+async function classifyImage(img){
+  const instruction = `Look at this single photo and respond with ONLY compact JSON — no markdown
+fences, no commentary:
+{"type": "menu_photo" | "dish_photo", "dishName": string or null, "extractedText": string or null}
+
+"menu_photo" = a printed/handwritten/board menu or price list showing multiple items with
+prices — used only as a reference to read from, never shown to customers. For this type, fill
+extractedText with a plain-text, one-line-per-item transcription of every item name, price (if
+visible), and short description (if visible) you can read. Leave dishName null.
+
+"dish_photo" = a photo of one actual food or drink item itself (a plate, cup, dish — not a
+list of items). For this type, fill dishName with your best short guess of what the dish is
+called (a few words, e.g. "cheeseburger" or "iced latte"). Leave extractedText null.
+
+Pick whichever type actually fits the photo.`;
+  const raw = await groqChat([{
+    role: 'user',
+    content: [
+      { type: 'text', text: instruction },
+      { type: 'image_url', image_url: { url: img.dataUrl } },
+    ],
+  }], { jsonOnly: true, model: CONFIG.GROQ_VISION_MODEL });
+  const cleaned = raw.trim().replace(/^```(json)?/i, '').replace(/```$/, '').trim();
+  try {
+    const parsed = JSON.parse(cleaned);
+    if (parsed.type === 'menu_photo' || parsed.type === 'dish_photo') return parsed;
+  } catch { /* fall through */ }
+  // If classification failed to parse, safest default is to treat it as a
+  // dish photo we couldn't identify, rather than silently discarding it.
+  return { type: 'dish_photo', dishName: null, extractedText: null };
 }
+
+function normalizeForMatch(s){
+  return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+// Finds a photo for a menu item with no uploaded photo, using Wikimedia
+// Commons' free, no-key, CORS-enabled search API. Best-effort — returns null
+// on no match or any failure, which is fine, the item just shows no image.
+async function findStockImage(term){
+  try {
+    const url = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(term + ' food')}&gsrlimit=1&gsrnamespace=6&prop=imageinfo&iiprop=url&iiurlwidth=300&format=json&origin=*`;
+    const res = await fetch(url);
+    if (!res.ok) return null;
+    const json = await res.json();
+    const pages = json.query && json.query.pages;
+    if (!pages) return null;
+    const first = Object.values(pages)[0];
+    const info = first && first.imageinfo && first.imageinfo[0];
+    return (info && (info.thumburl || info.url)) || null;
+  } catch {
+    return null;
+  }
+}
+
 
 /* =========================================================================
    Router — hash-based on purpose. The part after "#" never reaches the
@@ -581,21 +630,18 @@ function renderMenuData(data, slug){
     body.appendChild(el('div', 'menu-tagline', data.tagline));
   }
 
-  if (Array.isArray(data.images) && data.images.length){
-    const gal = el('div', 'gallery');
-    data.images.forEach(img => {
-      const im = document.createElement('img');
-      im.src = img.dataUrl || img;
-      gal.appendChild(im);
-    });
-    body.appendChild(gal);
-  }
-
   (data.sections || []).forEach(section => {
     const sec = el('div', 'section-block');
     sec.appendChild(el('div', 'section-title', (section.title || 'Menu').toUpperCase()));
     (section.items || []).forEach(item => {
       const row = el('div', 'item-row');
+      if (item.image){
+        const thumb = document.createElement('img');
+        thumb.className = 'item-thumb';
+        thumb.src = item.image;
+        thumb.alt = item.name || '';
+        row.appendChild(thumb);
+      }
       const left = el('div');
       left.appendChild(el('div', 'item-name', item.name || ''));
       if (item.description) left.appendChild(el('div', 'item-desc', item.description));
@@ -672,7 +718,7 @@ function renderCreator(editSlug){
     sha: null,
     messages: [],            // full chat transcript for Groq (excluding system prompt)
     pendingImages: [],       // images attached but not yet sent as a turn
-    committedImages: [],     // images folded into the menu on commit
+    dishPhotos: [],           // { dataUrl, dishName } — actual dish photos, matched to items on commit
     busy: false,
   };
 
@@ -758,10 +804,11 @@ items that have a name, an optional short description, and a price (include curr
 if the user gives one). Ask brief, specific follow-up questions one at a time — don't
 interrogate with a long list at once. Confirm items back briefly so the user can correct
 mistakes. When the user seems done, tell them they can hit "Commit & publish" whenever ready.
-Keep replies short (2-4 sentences). Sometimes a user message will include a block starting
-with "[Read from attached photo(s)]:" — that's text automatically transcribed from a photo
-they uploaded. Treat those listed items as if the user typed them, confirm what you found
-briefly, and ask about anything that looks unclear or cut off in the photo.`;
+Keep replies short (2-4 sentences). Sometimes a user message will include a bracketed note
+like "[Read from a reference menu photo]" (text automatically transcribed from a menu/price
+list photo — treat those listed items as if the user typed them) or "[Photo attached of a
+dish, looks like: X]" (the user attached a photo of an actual dish — confirm the dish name
+matches an item they've mentioned, or ask which item it's for if unclear).`;
 
   async function sendTurn(){
     const text = textarea.value.trim();
@@ -807,16 +854,28 @@ briefly, and ask about anything that looks unclear or cut off in the photo.`;
     renderPendingThumbs();
 
     if (text) addMessage('user', text);
-    if (imagesThisTurn.length){ addThumbs(imagesThisTurn); state.committedImages.push(...imagesThisTurn); }
+    if (imagesThisTurn.length) addThumbs(imagesThisTurn);
     textarea.value = '';
 
     setBusy(true); setTyping(true);
     try {
       let userContent = text || '';
       if (imagesThisTurn.length){
-        addNote(imagesThisTurn.length === 1 ? 'Reading the photo…' : `Reading ${imagesThisTurn.length} photos…`);
-        const extracted = await extractMenuFromImages(imagesThisTurn, text);
-        userContent += (userContent ? '\n\n' : '') + `[Read from attached photo(s)]:\n${extracted}`;
+        addNote(imagesThisTurn.length === 1 ? 'Looking at the photo…' : `Looking at ${imagesThisTurn.length} photos…`);
+        const notes = [];
+        for (const img of imagesThisTurn){
+          const cls = await classifyImage(img);
+          if (cls.type === 'menu_photo' && cls.extractedText){
+            notes.push(`[Read from a reference menu photo — not shown to customers]:\n${cls.extractedText}`);
+          } else if (cls.dishName){
+            state.dishPhotos.push({ dataUrl: img.dataUrl, dishName: cls.dishName });
+            notes.push(`[Photo attached of a dish, looks like: ${cls.dishName}]`);
+          } else {
+            state.dishPhotos.push({ dataUrl: img.dataUrl, dishName: null });
+            notes.push(`[Photo attached — couldn't confidently tell what dish it shows; ask the user]`);
+          }
+        }
+        userContent += (userContent ? '\n\n' : '') + notes.join('\n');
       }
       if (!userContent) userContent = '[photos attached]';
 
@@ -855,7 +914,37 @@ Use "" for any field you don't have. Include every item that was discussed.` },
       try { menuData = JSON.parse(cleaned); }
       catch { throw new Error('The assistant\'s summary wasn\'t valid JSON — try describing the menu a bit more, then commit again.'); }
 
-      menuData.images = state.committedImages;
+      const allItems = (menuData.sections || []).flatMap(s => s.items || []);
+
+      // Match uploaded dish photos to items by name (best-effort substring
+      // match either direction). Each photo is used at most once.
+      const photoPool = state.dishPhotos.slice();
+      allItems.forEach(item => {
+        const itemKey = normalizeForMatch(item.name);
+        if (!itemKey) return;
+        const idx = photoPool.findIndex(p => {
+          const dishKey = normalizeForMatch(p.dishName);
+          return dishKey && (itemKey.includes(dishKey) || dishKey.includes(itemKey));
+        });
+        if (idx !== -1){
+          item.image = photoPool[idx].dataUrl;
+          photoPool.splice(idx, 1);
+        }
+      });
+
+      // Anything still without a photo, look one up online — best-effort,
+      // fine if it comes back empty for an item.
+      const stillMissing = allItems.filter(item => !item.image && item.name);
+      if (stillMissing.length){
+        addNote(stillMissing.length === 1
+          ? 'Looking up a photo for one item…'
+          : `Looking up photos for ${stillMissing.length} items…`);
+        await Promise.all(stillMissing.map(async item => {
+          const found = await findStockImage(item.name);
+          if (found) item.image = found;
+        }));
+      }
+
       menuData.updatedAt = new Date().toISOString();
 
       addNote('Publishing to GitHub…');
