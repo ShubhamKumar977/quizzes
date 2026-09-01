@@ -1,0 +1,93 @@
+{
+  "restaurantName": "Guest",
+  "tagline": "",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Seasonal Soup",
+          "description": "A warm blend of fresh vegetables.",
+          "price": "$4.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Food_and_nutrition_resource_guide_for_homeless_shelters%2C_soup_kitchens%2C_and_food_banks_%28IA_CAT10859686%29.pdf/page1-330px-Food_and_nutrition_resource_guide_for_homeless_shelters%2C_soup_kitchens%2C_and_food_banks_%28IA_CAT10859686%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Crispy Calamari",
+          "description": "Lightly breaded, served with lemon aioli.",
+          "price": "$7.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Yummy_Calamari.jpg/330px-Yummy_Calamari.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Bruschetta",
+          "description": "Toasted baguette topped with tomato‑basil mix.",
+          "price": "$5.25",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Bruschetta_at_The_Bar_at_MacArthur_Place_-_Sarah_Stierch.jpg/330px-Bruschetta_at_The_Bar_at_MacArthur_Place_-_Sarah_Stierch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Grilled Chicken Plate",
+          "description": "Herb‑marinated chicken breast with seasonal veg.",
+          "price": "$12.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Grilled_chicken_and_risotto.jpg/330px-Grilled_chicken_and_risotto.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Pasta Primavera",
+          "description": "Penne tossed with garden veggies and olive oil.",
+          "price": "$11.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Shrimp_primavera_pasta_cooking_food_dinner.jpg/330px-Shrimp_primavera_pasta_cooking_food_dinner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Classic Cheeseburger",
+          "description": "Beef patty, cheddar, lettuce, tomato, house sauce.",
+          "price": "$10.75",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Cheeseburger_with_pickles%2C_onions_and_mustard.jpg/330px-Cheeseburger_with_pickles%2C_onions_and_mustard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Chocolate Lava Cake",
+          "description": "Warm cake with molten center, vanilla ice cream.",
+          "price": "$6.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Chocolate_Lava_Cake_1_%2828791097360%29.jpg/330px-Chocolate_Lava_Cake_1_%2828791097360%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Lemon Tart",
+          "description": "Tangy lemon curd in a buttery crust.",
+          "price": "$5.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Lemon_tart_dusted_with_powdered_sugar_at_a_restaurant.jpg/330px-Lemon_tart_dusted_with_powdered_sugar_at_a_restaurant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Fresh Lemonade",
+          "description": "House‑made, lightly sweetened.",
+          "price": "$2.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Delicious_fresh_lemonade_in_a_bag_%287446556720%29.jpg/330px-Delicious_fresh_lemonade_in_a_bag_%287446556720%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Iced Coffee",
+          "description": "Cold brew with milk option.",
+          "price": "$3.25",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Iced_coffee_2.jpg/330px-Iced_coffee_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Craft Beer",
+          "description": "Local IPA, 12 oz.",
+          "price": "$5.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Dargett_Craft_Beer_-_p%C3%A2tes_et_bi%C3%A8re.JPG/330px-Dargett_Craft_Beer_-_p%C3%A2tes_et_bi%C3%A8re.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-01T04:35:13.750Z"
+}
