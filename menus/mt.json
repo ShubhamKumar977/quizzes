@@ -1,0 +1,75 @@
+{
+  "restaurantName": "Sk",
+  "tagline": "",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Soup of the Day",
+          "description": "creamy seasonal soup",
+          "price": "$4.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Asparagus_soup_%28spargelsuppe%29.jpg/330px-Asparagus_soup_%28spargelsuppe%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Garlic Bread",
+          "description": "toasted baguette with herb butter",
+          "price": "$3.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/Garlic_bread_baguettes_1.jpg/330px-Garlic_bread_baguettes_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Classic Cheeseburger",
+          "description": "beef patty, cheddar, lettuce, tomato",
+          "price": "$9.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Cheeseburger_with_pickles%2C_onions_and_mustard.jpg/330px-Cheeseburger_with_pickles%2C_onions_and_mustard.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Margherita Pizza",
+          "description": "tomato, mozzarella, basil",
+          "price": "$11.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Gluten_lactose_free_margherita_pizza_by_sch%C3%A4r_brand.jpg/330px-Gluten_lactose_free_margherita_pizza_by_sch%C3%A4r_brand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Chocolate Brownie",
+          "description": "served warm with vanilla ice‑cream",
+          "price": "$5.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Chocolatebrownie.JPG/330px-Chocolatebrownie.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Lemon Tart",
+          "description": "tangy lemon curd in a crisp crust",
+          "price": "$4.75",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Lemon_tart_dusted_with_powdered_sugar_at_a_restaurant.jpg/330px-Lemon_tart_dusted_with_powdered_sugar_at_a_restaurant.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Iced Coffee",
+          "description": "cold brewed, served over ice",
+          "price": "$2.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Iced_coffee_2.jpg/330px-Iced_coffee_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Fresh Lemonade",
+          "description": "house‑made, lightly sweetened",
+          "price": "$2.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Delicious_fresh_lemonade_in_a_bag_%287446556720%29.jpg/330px-Delicious_fresh_lemonade_in_a_bag_%287446556720%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-01T22:19:09.839Z"
+}
