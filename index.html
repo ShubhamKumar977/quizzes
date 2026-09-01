@@ -429,18 +429,24 @@ const gh = {
 };
 
 /* ---------- Groq chat completions ---------- */
-async function groqChat(messages, { jsonOnly=false, model=null } = {}){
+async function groqChat(messages, { jsonOnly=false, model=null, reasoningEffort=null, maxTokens=null } = {}){
+  const body = {
+    model: model || CONFIG.GROQ_MODEL,
+    messages,
+    temperature: jsonOnly ? 0.2 : 0.7,
+  };
+  // qwen3.6-27b (our vision model) has a "thinking" mode that can spend its
+  // whole output budget on reasoning tokens, leaving nothing for the actual
+  // answer — which then comes back truncated/invalid. "none" turns that off.
+  if (reasoningEffort) body.reasoning_effort = reasoningEffort;
+  if (maxTokens) body.max_tokens = maxTokens;
   const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${CONFIG.GROQ_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      model: model || CONFIG.GROQ_MODEL,
-      messages,
-      temperature: jsonOnly ? 0.2 : 0.7,
-    }),
+    body: JSON.stringify(body),
   });
   if (!res.ok){
     const err = await res.text();
@@ -477,14 +483,23 @@ Pick whichever type actually fits the photo.`;
       { type: 'text', text: instruction },
       { type: 'image_url', image_url: { url: img.dataUrl } },
     ],
-  }], { jsonOnly: true, model: CONFIG.GROQ_VISION_MODEL });
-  const cleaned = raw.trim().replace(/^```(json)?/i, '').replace(/```$/, '').trim();
-  try {
-    const parsed = JSON.parse(cleaned);
-    if (parsed.type === 'menu_photo' || parsed.type === 'dish_photo') return parsed;
-  } catch { /* fall through */ }
-  // If classification failed to parse, safest default is to treat it as a
-  // dish photo we couldn't identify, rather than silently discarding it.
+  }], {
+    jsonOnly: true,
+    model: CONFIG.GROQ_VISION_MODEL,
+    reasoningEffort: 'none',
+    maxTokens: 1024,
+  });
+  // Be defensive: even with reasoning off, don't assume the response is
+  // pure JSON — grab the {...} block from wherever it lands in the text.
+  const match = raw.match(/\{[\s\S]*\}/);
+  if (match){
+    try {
+      const parsed = JSON.parse(match[0]);
+      if (parsed.type === 'menu_photo' || parsed.type === 'dish_photo') return parsed;
+    } catch { /* fall through */ }
+  }
+  // If classification still failed to parse, safest default is to treat it
+  // as a dish photo we couldn't identify, rather than silently discarding it.
   return { type: 'dish_photo', dishName: null, extractedText: null };
 }
 
