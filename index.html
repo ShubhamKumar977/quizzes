@@ -514,6 +514,42 @@ function normalizeForMatch(s){
   return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 }
 
+// Merges what was just discussed (delta) into the menu as it existed before
+// this edit session (base). Existing sections/items are matched by
+// name/title and updated in place; anything new is appended; anything not
+// mentioned in this session is left untouched. This is what stops "add
+// badam milk" from wiping out the rest of an existing menu — the model only
+// needs to describe what changed, not reproduce everything from memory.
+function mergeMenus(base, delta){
+  const merged = JSON.parse(JSON.stringify(base || {}));
+  if (delta.restaurantName) merged.restaurantName = delta.restaurantName;
+  if (delta.tagline) merged.tagline = delta.tagline;
+  merged.sections = merged.sections || [];
+
+  (delta.sections || []).forEach(deltaSection => {
+    if (!deltaSection.title) return;
+    let target = merged.sections.find(s => normalizeForMatch(s.title) === normalizeForMatch(deltaSection.title));
+    if (!target){
+      target = { title: deltaSection.title, items: [] };
+      merged.sections.push(target);
+    }
+    target.items = target.items || [];
+    (deltaSection.items || []).forEach(deltaItem => {
+      if (!deltaItem.name) return;
+      const idx = target.items.findIndex(it => normalizeForMatch(it.name) === normalizeForMatch(deltaItem.name));
+      if (idx !== -1){
+        // Update in place — keeps fields like an already-matched item.image
+        // that the delta (which never includes images) doesn't mention.
+        target.items[idx] = { ...target.items[idx], ...deltaItem };
+      } else {
+        target.items.push(deltaItem);
+      }
+    });
+  });
+
+  return merged;
+}
+
 // Finds a photo for a menu item with no uploaded photo, using Wikimedia
 // Commons' free, no-key, CORS-enabled search API. Best-effort — returns null
 // on no match or any failure, which is fine, the item just shows no image.
@@ -738,6 +774,7 @@ function renderCreator(editSlug){
     slug: null,
     displayName: null,
     sha: null,
+    existingMenuData: null,  // set when editing — the menu as it was before this session, merged into on commit
     messages: [],            // full chat transcript for Groq (excluding system prompt)
     pendingImages: [],       // images attached but not yet sent as a turn
     dishPhotos: [],           // { dataUrl, dishName } — actual dish photos, matched to items on commit
@@ -853,7 +890,7 @@ matches an item they've mentioned, or ask which item it's for if unclear).`;
         }
         state.slug = slug;
         state.displayName = text;
-        if (existing){ state.sha = existing.sha; }
+        if (existing){ state.sha = existing.sha; state.existingMenuData = JSON.parse(JSON.stringify(existing.data)); }
         state.phase = 'chatting';
         if (existing){
           state.messages.push({ role: 'system', content: `${SYSTEM_PROMPT}
@@ -932,14 +969,20 @@ ${JSON.stringify(existing.data)}` });
         { role: 'system', content: `Based on the full conversation, output ONLY a single JSON object
 (no markdown fences, no commentary) with this exact shape:
 {"restaurantName": string, "tagline": string, "sections": [{"title": string, "items": [{"name": string, "description": string, "price": string}]}]}
-Use "" for any field you don't have. Include every item that was discussed.` },
+Use "" for any field you don't have. Include only what was actually discussed in this
+conversation — new or changed items and sections. Do not invent items that weren't mentioned.` },
         ...state.messages.filter(m => m.role !== 'system'),
       ], { jsonOnly: true });
 
       let cleaned = extraction.trim().replace(/^```(json)?/i, '').replace(/```$/,'').trim();
-      let menuData;
-      try { menuData = JSON.parse(cleaned); }
+      let delta;
+      try { delta = JSON.parse(cleaned); }
       catch { throw new Error('The assistant\'s summary wasn\'t valid JSON — try describing the menu a bit more, then commit again.'); }
+
+      // When editing, merge what was just discussed into the menu as it
+      // existed before this session — never regenerate the whole thing from
+      // a short conversation, or anything not mentioned gets lost.
+      const menuData = state.existingMenuData ? mergeMenus(state.existingMenuData, delta) : delta;
 
       const allItems = (menuData.sections || []).flatMap(s => s.items || []);
 
@@ -977,6 +1020,7 @@ Use "" for any field you don't have. Include every item that was discussed.` },
       addNote('Publishing to GitHub…');
       const result = await gh.putFile(state.slug, menuData, state.sha, `${state.sha ? 'Update' : 'Create'} menu: ${state.slug}`);
       state.sha = result.content.sha;
+      state.existingMenuData = menuData;
       addNote('Published.');
       addMessage('bot', `Done — your menu is live at:`);
       addQrBlock(state.slug);
