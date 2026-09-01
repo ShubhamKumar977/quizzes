@@ -31,35 +31,6 @@
       ]
     },
     {
-      "title": "PIZZA",
-      "items": [
-        {
-          "name": "Margherita",
-          "description": "",
-          "price": "150",
-          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Chicken_Egg_without_Eggshell_5859.jpg/330px-Chicken_Egg_without_Eggshell_5859.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-        },
-        {
-          "name": "Onion and Cream",
-          "description": "",
-          "price": "290",
-          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Lay%27s_Sour_Cream_and_Onion_Potato_Chips%2C_Canada%2C_2026-02-15.jpg/330px-Lay%27s_Sour_Cream_and_Onion_Potato_Chips%2C_Canada%2C_2026-02-15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-        },
-        {
-          "name": "Chicken",
-          "description": "",
-          "price": "310",
-          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Chickens_in_market.jpg/330px-Chickens_in_market.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-        },
-        {
-          "name": "Farmhouse",
-          "description": "",
-          "price": "240",
-          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Farmhouse_-_Food_and_Agriculture_Museum_-_Setagaya%2C_Tokyo%2C_Japan_-_DSC09809.jpg/330px-Farmhouse_-_Food_and_Agriculture_Museum_-_Setagaya%2C_Tokyo%2C_Japan_-_DSC09809.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
-        }
-      ]
-    },
-    {
       "title": "Pizzas",
       "items": [
         {
