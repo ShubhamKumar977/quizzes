@@ -1,0 +1,64 @@
+{
+  "restaurantName": "mccafe",
+  "tagline": "",
+  "sections": [
+    {
+      "title": "BURGERS",
+      "items": [
+        {
+          "name": "Chicken Burger",
+          "description": "",
+          "price": "80",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Burger-King-Chicken-Tenders.jpg/330px-Burger-King-Chicken-Tenders.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "FRIES",
+      "items": [
+        {
+          "name": "Honey Chilli Fries",
+          "description": "",
+          "price": "120",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/Honey_chilli_potato.jpg/330px-Honey_chilli_potato.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "French Fries",
+          "description": "",
+          "price": "80",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Food_on_Mallorca_02.jpg/330px-Food_on_Mallorca_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "PIZZA",
+      "items": [
+        {
+          "name": "Margherita",
+          "description": "",
+          "price": "140",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Chicken_Egg_without_Eggshell_5859.jpg/330px-Chicken_Egg_without_Eggshell_5859.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Onion and Cream",
+          "description": "",
+          "price": "280",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/Lay%27s_Sour_Cream_and_Onion_Potato_Chips%2C_Canada%2C_2026-02-15.jpg/330px-Lay%27s_Sour_Cream_and_Onion_Potato_Chips%2C_Canada%2C_2026-02-15.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Chicken",
+          "description": "",
+          "price": "300",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Chickens_in_market.jpg/330px-Chickens_in_market.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Farmhouse",
+          "description": "",
+          "price": "230",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Farmhouse_-_Food_and_Agriculture_Museum_-_Setagaya%2C_Tokyo%2C_Japan_-_DSC09809.jpg/330px-Farmhouse_-_Food_and_Agriculture_Museum_-_Setagaya%2C_Tokyo%2C_Japan_-_DSC09809.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-01T11:57:46.408Z"
+}
