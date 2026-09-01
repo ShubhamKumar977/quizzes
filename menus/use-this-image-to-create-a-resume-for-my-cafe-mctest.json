@@ -65,29 +65,29 @@
         {
           "name": "Margherita Pizza",
           "description": "",
-          "price": "",
+          "price": "150",
           "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Gluten_lactose_free_margherita_pizza_by_sch%C3%A4r_brand.jpg/330px-Gluten_lactose_free_margherita_pizza_by_sch%C3%A4r_brand.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
         },
         {
           "name": "Onion and Cream Pizza",
           "description": "",
-          "price": "",
+          "price": "290",
           "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/20240105_Carbonara_Pizza_Pizza_Arale_Tel_Aviv_anagoria.jpg/330px-20240105_Carbonara_Pizza_Pizza_Arale_Tel_Aviv_anagoria.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
         },
         {
           "name": "Chicken Pizza",
           "description": "",
-          "price": "",
+          "price": "310",
           "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Indian_chicken_pizza.jpg/330px-Indian_chicken_pizza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
         },
         {
           "name": "Farmhouse Pizza",
           "description": "",
-          "price": "",
+          "price": "240",
           "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c2/Farmhouse_Pizza-Domino%27s-Ahmedabad-Gujarat-202013-1.jpg/330px-Farmhouse_Pizza-Domino%27s-Ahmedabad-Gujarat-202013-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
         }
       ]
     }
   ],
-  "updatedAt": "2026-09-01T12:05:43.330Z"
+  "updatedAt": "2026-09-01T12:10:51.745Z"
 }
