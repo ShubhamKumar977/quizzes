@@ -249,6 +249,48 @@
     padding:60px 28px; text-align:center; color:rgba(31,36,33,0.6);
   }
   .state-msg a{ color:var(--plum); font-weight:600; }
+
+  /* ---------- QR code ---------- */
+  .qr-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:16px;
+  }
+  .qr-img{
+    width:72px; height:72px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:#fff;
+    padding:4px;
+    flex-shrink:0;
+  }
+  .qr-caption{ font-size:12px; color:rgba(31,36,33,0.6); line-height:1.5; }
+  .qr-link{
+    display:block;
+    color:var(--plum);
+    font-weight:600;
+    word-break:break-all;
+  }
+  .qr-block{
+    align-self:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    padding:16px;
+    background:var(--paper-dim);
+    border-radius:var(--radius);
+    max-width:90%;
+  }
+  .qr-img-lg{
+    width:180px; height:180px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:#fff;
+    padding:8px;
+  }
+  .qr-block .qr-link{ font-size:13px; text-align:center; }
 </style>
 </head>
 <body>
@@ -272,8 +314,7 @@
    ========================================================================= */
 let arr1 = "github"
 let arr2 = "_pat"
-  
-  const CONFIG = {
+const CONFIG = {
   // From https://console.groq.com/keys — starts with "gsk_"
   // These placeholders are substituted at deploy time by
   // .github/workflows/deploy.yml, which pulls the real values from
@@ -281,8 +322,12 @@ let arr2 = "_pat"
   // in the file you commit — see the workflow file for setup.
   GROQ_API_KEY:  "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",
   GROQ_MODEL:    "openai/gpt-oss-120b",
+  // Text-only model above can't see images. This one can — used specifically
+  // when a photo is attached, to actually read/transcribe menu items from it.
+  // Groq's vision lineup changes often; check https://console.groq.com/docs/vision
+  // if this ever 404s the way the text model did.
+  GROQ_VISION_MODEL: "qwen/qwen3.6-27b",
 
-  
   GITHUB_TOKEN:  arr1 + arr2 + "_11ASXETMI0DgwSt3sxrOke_nQohakUZOgbGk5YMCvXLC6Sy47bwW4zfJH3izaitneV6A34AKKNsQCMptk5",
 
   // The repo you'll create for this — e.g. github.com/jdoe/my-menu-app
@@ -383,7 +428,7 @@ const gh = {
 };
 
 /* ---------- Groq chat completions ---------- */
-async function groqChat(messages, { jsonOnly=false } = {}){
+async function groqChat(messages, { jsonOnly=false, model=null } = {}){
   const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -391,7 +436,7 @@ async function groqChat(messages, { jsonOnly=false } = {}){
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: CONFIG.GROQ_MODEL,
+      model: model || CONFIG.GROQ_MODEL,
       messages,
       temperature: jsonOnly ? 0.2 : 0.7,
     }),
@@ -402,6 +447,20 @@ async function groqChat(messages, { jsonOnly=false } = {}){
   }
   const json = await res.json();
   return json.choices[0].message.content;
+}
+
+// Reads menu items out of one or more photos using the vision model, and
+// returns plain text (not an image/array payload) so it can safely join the
+// rest of the conversation history, which is sent to the text-only model.
+async function extractMenuFromImages(images, userText){
+  const instruction = (userText ? userText + '\n\n' : '') +
+    `Look at the attached photo(s) of a menu (or menu items) and list everything you can read:
+each item's name, its price if visible, and a short description if visible. Use one line per
+item, plain text, no markdown tables. If a photo isn't a menu or nothing is legible, say so
+plainly instead of guessing.`;
+  const content = [{ type: 'text', text: instruction }];
+  images.forEach(img => content.push({ type: 'image_url', image_url: { url: img.dataUrl } }));
+  return groqChat([{ role: 'user', content }], { jsonOnly: true, model: CONFIG.GROQ_VISION_MODEL });
 }
 
 /* =========================================================================
@@ -421,6 +480,19 @@ function parseHash(){
     return { mode: 'edit', slug: decodeURIComponent(raw.slice(5)) };
   }
   return { mode: 'view', slug: decodeURIComponent(raw) };
+}
+
+function menuUrlFor(slug){
+  // Absolute URL to a published menu — works regardless of how deep the
+  // page is hosted, since it's built from the current location.
+  const base = location.origin + location.pathname;
+  return `${base}#/${encodeURIComponent(slug)}`;
+}
+function qrImageUrl(dataUrl, size = 220){
+  // Free, no-key QR image service — good enough for a shareable/printable
+  // code. If you'd rather not depend on a third party, swap this for a
+  // bundled QR-generation library later.
+  return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(dataUrl)}`;
 }
 
 function goToCreate(){ location.hash = '#/'; }
@@ -486,6 +558,21 @@ function renderMenuData(data, slug){
   const head = el('div', 'ticket-head');
   head.appendChild(el('div', 'kicker', 'MENU TICKET'));
   head.appendChild(el('h1', null, data.restaurantName || slug));
+
+  const qrRow = el('div', 'qr-row');
+  const qrImg = document.createElement('img');
+  qrImg.className = 'qr-img';
+  qrImg.alt = 'QR code linking to this menu';
+  qrImg.src = qrImageUrl(menuUrlFor(slug), 96);
+  const qrCaption = el('div', 'qr-caption');
+  qrCaption.appendChild(el('div', null, 'Scan to reopen this menu'));
+  const qrLink = el('a', 'qr-link', menuUrlFor(slug).replace(/^https?:\/\//, ''));
+  qrLink.href = menuUrlFor(slug);
+  qrCaption.appendChild(qrLink);
+  qrRow.appendChild(qrImg);
+  qrRow.appendChild(qrCaption);
+  head.appendChild(qrRow);
+
   app.appendChild(head);
 
   const body = el('div', 'menu-body');
@@ -630,6 +717,24 @@ function renderCreator(editSlug){
     scroll.appendChild(t);
     scroll.scrollTop = scroll.scrollHeight;
   }
+  function addQrBlock(slug){
+    const url = menuUrlFor(slug);
+    const wrap = el('div', 'qr-block');
+    const img = document.createElement('img');
+    img.className = 'qr-img-lg';
+    img.alt = `QR code for ${slug}`;
+    img.src = qrImageUrl(url, 200);
+    wrap.appendChild(img);
+    const link = el('a', 'qr-link', url.replace(/^https?:\/\//, ''));
+    link.href = url;
+    wrap.appendChild(link);
+    const viewBtn = el('button', 'commit-btn', 'View menu');
+    viewBtn.style.marginTop = '10px';
+    viewBtn.onclick = () => goToView(slug);
+    wrap.appendChild(viewBtn);
+    scroll.appendChild(wrap);
+    scroll.scrollTop = scroll.scrollHeight;
+  }
   function setTyping(on){
     let n = $('#typingNote');
     if (on){
@@ -653,7 +758,10 @@ items that have a name, an optional short description, and a price (include curr
 if the user gives one). Ask brief, specific follow-up questions one at a time — don't
 interrogate with a long list at once. Confirm items back briefly so the user can correct
 mistakes. When the user seems done, tell them they can hit "Commit & publish" whenever ready.
-Keep replies short (2-4 sentences).`;
+Keep replies short (2-4 sentences). Sometimes a user message will include a block starting
+with "[Read from attached photo(s)]:" — that's text automatically transcribed from a photo
+they uploaded. Treat those listed items as if the user typed them, confirm what you found
+briefly, and ask about anything that looks unclear or cut off in the photo.`;
 
   async function sendTurn(){
     const text = textarea.value.trim();
@@ -702,15 +810,17 @@ Keep replies short (2-4 sentences).`;
     if (imagesThisTurn.length){ addThumbs(imagesThisTurn); state.committedImages.push(...imagesThisTurn); }
     textarea.value = '';
 
-    let userContent = text;
-    if (imagesThisTurn.length){
-      userContent += (userContent ? '\n' : '') + `[Attached ${imagesThisTurn.length} photo(s): ${imagesThisTurn.map(i=>i.name).join(', ')}]`;
-    }
-    if (!userContent) userContent = '[photos attached]';
-
-    state.messages.push({ role: 'user', content: userContent });
     setBusy(true); setTyping(true);
     try {
+      let userContent = text || '';
+      if (imagesThisTurn.length){
+        addNote(imagesThisTurn.length === 1 ? 'Reading the photo…' : `Reading ${imagesThisTurn.length} photos…`);
+        const extracted = await extractMenuFromImages(imagesThisTurn, text);
+        userContent += (userContent ? '\n\n' : '') + `[Read from attached photo(s)]:\n${extracted}`;
+      }
+      if (!userContent) userContent = '[photos attached]';
+
+      state.messages.push({ role: 'user', content: userContent });
       const reply = await groqChat(state.messages);
       state.messages.push({ role: 'assistant', content: reply });
       setTyping(false);
@@ -752,8 +862,9 @@ Use "" for any field you don't have. Include every item that was discussed.` },
       const result = await gh.putFile(state.slug, menuData, state.sha, `${state.sha ? 'Update' : 'Create'} menu: ${state.slug}`);
       state.sha = result.content.sha;
       addNote('Published.');
-      addMessage('bot', `Done — your menu is live. Redirecting you to it now.`);
-      setTimeout(() => { goToView(state.slug); }, 900);
+      addMessage('bot', `Done — your menu is live at:`);
+      addQrBlock(state.slug);
+      setBusy(false);
     } catch (e){
       addMessage('bot', `Couldn't publish: ${e.message}`);
       setBusy(false);
