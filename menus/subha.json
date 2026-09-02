@@ -1,0 +1,92 @@
+{
+  "restaurantName": "Subha",
+  "tagline": "",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Spiced Lentil Soup",
+          "description": "Warm, silky soup with cumin, coriander & a drizzle of lemon oil",
+          "price": "$4.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Lentil_Soup_-_Schnitzel_%26_Co._2026-05-16.jpg/330px-Lentil_Soup_-_Schnitzel_%26_Co._2026-05-16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Crispy Halloumi Bites",
+          "description": "Golden‑fried halloumi, mint‑yogurt dip",
+          "price": "$5.25"
+        },
+        {
+          "name": "Avocado & Tomato Bruschetta",
+          "description": "Toasted sourdough, smashed avocado, heirloom tomatoes, balsamic glaze",
+          "price": "$5.00",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Deliciously_healthy_family_meals_%28IA_CAT31314486%29.pdf/page1-330px-Deliciously_healthy_family_meals_%28IA_CAT31314486%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Grilled Chicken Shawarma Plate",
+          "description": "Marinated chicken, saffron rice, pickled veggies, garlic sauce",
+          "price": "$11.95",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Nasi_ayam%2C_Emado%27s_Shawarma_Embong_Malang%2C_Surabaya%2C_2025_%2801%29.jpg/330px-Nasi_ayam%2C_Emado%27s_Shawarma_Embong_Malang%2C_Surabaya%2C_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Paneer Tikka Masala",
+          "description": "Char‑grilled paneer in a rich tomato‑cream sauce, basmati rice",
+          "price": "$10.50",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Paneer_Tikka_Masala_%282026%29_01.jpg/330px-Paneer_Tikka_Masala_%282026%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mediterranean Veggie Bowl",
+          "description": "Quinoa, roasted zucchini, roasted red peppers, feta, lemon‑herb vinaigrette",
+          "price": "$9.75",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Owner%27s_manual_for_your_body_-_how_to_fuel_it_and_move_it_for_a_fun_and_healthy_life_%28IA_CAT31307267%29.pdf/page1-330px-Owner%27s_manual_for_your_body_-_how_to_fuel_it_and_move_it_for_a_fun_and_healthy_life_%28IA_CAT31307267%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Cardamom Panna Cotta",
+          "description": "Silky cream topped with pistachio crumble",
+          "price": "$4.80",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Colonial_and_Indian_Exhibition%2C_1886._Empire_of_India._Special_catalogue_of_exhibits_by_the_Government_of_India_and_private_exhibitors._Royal_Commission_and_Government_of_India_silk_culture_court._%28IA_b29351789%29.pdf/page1-330px-thumbnail.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mango Coconut Sorbet",
+          "description": "Refreshingly dairy‑free sorbet with a hint of lime",
+          "price": "$4.20",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Coconut_Panna_Cotta_-_jasmine_rice_sorbet%2C_almond%2C_mango_%2814577449368%29.jpg/330px-Coconut_Panna_Cotta_-_jasmine_rice_sorbet%2C_almond%2C_mango_%2814577449368%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Classic Mint Lemonade",
+          "description": "Fresh mint, lemon, a touch of honey",
+          "price": "$2.95",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Eating_archaeology_-_the_official_gag_me_with_a_trowel_cookbook%2C_1983_%28IA_eatingarchaeolog00gros%29.pdf/page1-330px-Eating_archaeology_-_the_official_gag_me_with_a_trowel_cookbook%2C_1983_%28IA_eatingarchaeolog00gros%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Cold Brew Espresso",
+          "description": "Smooth, low‑acid cold brew",
+          "price": "$3.25",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Pacific_connection_-_USACE-p16021coll8-848.pdf/page1-330px-Pacific_connection_-_USACE-p16021coll8-848.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Rosemary‑Infused Iced Tea",
+          "description": "Light black tea with rosemary sprig",
+          "price": "$2.80",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Salads%3B_their_uses_as_food_%26_medicine%2C_with_50_useful_salad_recipes_%28IA_saladstheirusesa00broa%29.pdf/page1-330px-Salads%3B_their_uses_as_food_%26_medicine%2C_with_50_useful_salad_recipes_%28IA_saladstheirusesa00broa%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-02T02:56:56.097Z"
+}
