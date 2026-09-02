@@ -2,110 +2,257 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>beauty – Menu</title>
+<title>beauty Menu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #fdfdf7;
-  --primary: #2a4d14;
-  --accent: #c27d38;
-  --muted: #7a7a6e;
-  --radius: .5rem;
-  --max-width: 960px;
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Montserrat', sans-serif;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{
-  font-family:var(--font-body);
-  background:var(--bg);
-  color:#333;
-  line-height:1.6;
-  padding:1rem;
-  display:flex;
-  justify-content:center;
-}
-.container{
-  max-width:var(--max-width);
-  width:100%;
-}
-header{
-  text-align:center;
-  padding:2rem 0 1rem;
-}
-h1{
-  font-family:var(--font-heading);
-  font-size:2.8rem;
-  color:var(--primary);
-  margin-bottom:.3rem;
-}
-h2{
-  font-size:1.2rem;
-  color:var(--muted);
-}
-section{
-  margin-top:2rem;
-}
-section h3{
-  font-family:var(--font-heading);
-  font-size:1.6rem;
-  color:var(--accent);
-  border-bottom:2px solid var(--accent);
-  padding-bottom:.3rem;
-  margin-bottom:1rem;
-}
-.item{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:flex-start;
-  margin-bottom:1.2rem;
-}
-.item img{
-  width:80px;
-  height:80px;
-  object-fit:cover;
-  border-radius:var(--radius);
-  margin-right:1rem;
-  flex-shrink:0;
-}
-.item .info{
-  flex:1 1 0;
-}
-.item .info h4{
-  font-weight:500;
-  font-size:1.1rem;
-  margin:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.item .info h4 .price{
-  font-family:var(--font-heading);
-  color:var(--primary);
-}
-.item .info p{
-  margin:.3rem 0 0;
-  color:var(--muted);
-  font-size:.95rem;
-}
-@media (max-width:600px){
-  h1{font-size:2.2rem;}
-  .item{flex-direction:column; align-items:center;}
-  .item img{margin:0 0 .5rem;}
-  .item .info h4{flex-direction:column; align-items:flex-start;}
-  .item .info h4 .price{margin-top:.3rem;}
-}
+  :root {
+    --bg: #f9f5f0;
+    --primary: #2a4d68;
+    --accent: #d96c6c;
+    --text: #333;
+    --muted: #666;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height:1.6;
+    padding: 2rem;
+  }
+  .container { max-width: 1100px; margin:auto; }
+  header {
+    text-align:center;
+    margin-bottom:3rem;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size:3rem;
+    color: var(--primary);
+    margin-bottom:.5rem;
+  }
+  .tagline { font-size:1.2rem; color: var(--muted); }
+  .section { margin-bottom:2.5rem; }
+  .section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size:2rem;
+    color: var(--accent);
+    border-bottom:2px solid var(--accent);
+    padding-bottom:.3rem;
+    margin-bottom:1rem;
+  }
+  .item {
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+    margin-bottom:1.2rem;
+    flex-wrap:wrap;
+  }
+  .item img {
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:8px;
+    flex-shrink:0;
+  }
+  .item-details {
+    flex:1;
+    min-width:0;
+  }
+  .item-name {
+    font-weight:500;
+    font-size:1.1rem;
+    color: var(--primary);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .price {
+    font-family: 'Poppins', sans-serif;
+    font-weight:500;
+    color: var(--accent);
+    white-space:nowrap;
+    margin-left:1rem;
+  }
+  .item-description {
+    font-size:.9rem;
+    color: var(--muted);
+    margin-top:.3rem;
+  }
+  @media (max-width:600px) {
+    h1 {font-size:2.2rem;}
+    .section h2 {font-size:1.6rem;}
+    .item img {width:60px;height:60px;}
+  }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
     <h1>beauty</h1>
-    <h2></h2>
+    <p class="tagline"></p>
   </header>
-  <!-- No menu sections provided -->
-  <p style="text-align:center;color:var(--muted);margin-top:2rem;">Menu will be updated soon.</p>
+
+  <section class="section">
+    <h2>Starters</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Fries_from_New_York_Buffalo_Brad%27s_Hot_Wings_on_the_Food_Hall_at_SM_City_Cebu_%282025-01-20%29.jpg/330px-Fries_from_New_York_Buffalo_Brad%27s_Hot_Wings_on_the_Food_Hall_at_SM_City_Cebu_%282025-01-20%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Fried Hot Wings">
+      <div class="item-details">
+        <div class="item-name"><span>Fried Hot Wings</span><span class="price">$5.97</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Mozzarella_sticks_and_tater_tots_poutine.jpg/330px-Mozzarella_sticks_and_tater_tots_poutine.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mozzarella Sticks">
+      <div class="item-details">
+        <div class="item-name"><span>Mozzarella Sticks</span><span class="price">$4.71</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Agricultural_trade_highlights_%28IA_CAT10401061061%29.pdf/page1-330px-Agricultural_trade_highlights_%28IA_CAT10401061061%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Tex-Mex Beef Nachos">
+      <div class="item-details">
+        <div class="item-name"><span>Tex-Mex Beef Nachos</span><span class="price">$6.81</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Food_views_in_the_news%3B_a_weekly_service_for_food_editors_of_western_dailies_%28IA_foodviewsinnews1947unit_0%29.pdf/page1-330px-Food_views_in_the_news%3B_a_weekly_service_for_food_editors_of_western_dailies_%28IA_foodviewsinnews1947unit_0%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Shrimp Poppers">
+      <div class="item-details">
+        <div class="item-name"><span>Shrimp Poppers</span><span class="price">$5.45</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/Chilli_Scrambled_Eggs.jpg/330px-Chilli_Scrambled_Eggs.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Scrambled Eggs">
+      <div class="item-details">
+        <div class="item-name"><span>Scrambled Eggs</span><span class="price">$1.00</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Main</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a8/Rollin%27_in_the_Dough_Classic_Burger%2C_Shreveport%2C_LA.jpg/330px-Rollin%27_in_the_Dough_Classic_Burger%2C_Shreveport%2C_LA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Classic Burger">
+      <div class="item-details">
+        <div class="item-name"><span>Classic Burger</span><span class="price">$3.04</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Big_Mac_hamburger.jpg/330px-Big_Mac_hamburger.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Cheese Burger">
+      <div class="item-details">
+        <div class="item-name"><span>Cheese Burger</span><span class="price">$4.08</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Jef_Nuuyaru_Burger_Eaten.jpg/330px-Jef_Nuuyaru_Burger_Eaten.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Spam Burger">
+      <div class="item-details">
+        <div class="item-name"><span>Spam Burger</span><span class="price">$5.87</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/The_Smokey_-_T_%40_The_Prince_George_2023-12-06.jpg/330px-The_Smokey_-_T_%40_The_Prince_George_2023-12-06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Bacon Mushroom Burger">
+      <div class="item-details">
+        <div class="item-name"><span>Bacon Mushroom Burger</span><span class="price">$5.13</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Lamb_burger_%2818267254468%29.jpg/330px-Lamb_burger_%2818267254468%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Lamb Burger">
+      <div class="item-details">
+        <div class="item-name"><span>Lamb Burger</span><span class="price">$8.06</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Dessert</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/Apple_cake_with_vanilla_ice_cream_2.jpg/330px-Apple_cake_with_vanilla_ice_cream_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Apple Pie">
+      <div class="item-details">
+        <div class="item-name"><span>Apple Pie</span><span class="price">$5.97</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Food_for_thought%3B_%28IA_foodforthought00dear%29.pdf/page1-330px-Food_for_thought%3B_%28IA_foodforthought00dear%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Banana Split Sundae">
+      <div class="item-details">
+        <div class="item-name"><span>Banana Split Sundae</span><span class="price">$4.71</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Strawberry_Cheesecake%2C_2021.jpg/330px-Strawberry_Cheesecake%2C_2021.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Cheesecake">
+      <div class="item-details">
+        <div class="item-name"><span>Cheesecake</span><span class="price">$6.81</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/001_Blueberry_cheesecakes.jpg/330px-001_Blueberry_cheesecakes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Blueberry Cheesecake">
+      <div class="item-details">
+        <div class="item-name"><span>Blueberry Cheesecake</span><span class="price">$7.00</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Dessert_with_mandarines_and_white_chocolate_mousse%2C_Hannover.jpg/330px-Dessert_with_mandarines_and_white_chocolate_mousse%2C_Hannover.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chocolate Mousse">
+      <div class="item-details">
+        <div class="item-name"><span>Chocolate Mousse</span><span class="price">$5.45</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Chocolate_%26_pear_pancakes_-_Caf%C3%A9_des_Couleurs_2025-04-03.jpg/330px-Chocolate_%26_pear_pancakes_-_Caf%C3%A9_des_Couleurs_2025-04-03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chocolate Pancakes">
+      <div class="item-details">
+        <div class="item-name"><span>Chocolate Pancakes</span><span class="price">$3.00</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg/330px-Waffle%2C_Baytree_Waffle_House%2C_Remerton.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Waffles">
+      <div class="item-details">
+        <div class="item-name"><span>Waffles</span><span class="price">$3.00</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Beverages</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Vanilla_Bean_Dream_Shake_%283850165121%29.jpg/330px-Vanilla_Bean_Dream_Shake_%283850165121%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Vanilla Shake">
+      <div class="item-details">
+        <div class="item-name"><span>Vanilla Shake</span><span class="price">$3.50</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Avocado_Chocolate_Shake%2C_July_2025.jpg/330px-Avocado_Chocolate_Shake%2C_July_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chocolate Shake">
+      <div class="item-details">
+        <div class="item-name"><span>Chocolate Shake</span><span class="price">$3.50</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Strawberry_milk_shake_%28cropped%29.jpg/330px-Strawberry_milk_shake_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Strawberry Shake">
+      <div class="item-details">
+        <div class="item-name"><span>Strawberry Shake</span><span class="price">$3.50</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/Nutella_Almond_Milkshake_-_Home_-_Chandigarh_-_India_-_0007.jpg/330px-Nutella_Almond_Milkshake_-_Home_-_Chandigarh_-_India_-_0007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Nutella Shake">
+      <div class="item-details">
+        <div class="item-name"><span>Nutella Shake</span><span class="price">$3.50</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/A_small_cup_of_coffee.JPG/330px-A_small_cup_of_coffee.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Coffee">
+      <div class="item-details">
+        <div class="item-name"><span>Coffee</span><span class="price">$2.00</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Zhu-Ye-Qing-Tea-03.jpg/330px-Zhu-Ye-Qing-Tea-03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Tea">
+      <div class="item-details">
+        <div class="item-name"><span>Tea</span><span class="price">$1.50</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Oat_porridge_in_Ghana.jpg/330px-Oat_porridge_in_Ghana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Hot Milk">
+      <div class="item-details">
+        <div class="item-name"><span>Hot Milk</span><span class="price">$1.00</span></div>
+      </div>
+    </div>
+  </section>
 </div>
 </body>
 </html>
