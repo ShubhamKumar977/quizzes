@@ -251,6 +251,26 @@
   }
   .state-msg a{ color:var(--plum); font-weight:600; }
 
+  /* ---------- AI-generated menu page mode ---------- */
+  #app.generated-mode{
+    max-width:none;
+    box-shadow:none;
+    background:transparent;
+    display:block;
+  }
+  .generated-frame{
+    display:block;
+    width:100%;
+    min-height:100vh;
+    border:none;
+  }
+  .edit-fab-floating{
+    position:fixed;
+    bottom:20px; right:20px;
+    z-index:10;
+    box-shadow:0 4px 16px rgba(0,0,0,0.3);
+  }
+
   /* ---------- QR code ---------- */
   .qr-row{
     display:flex;
@@ -397,6 +417,9 @@ const gh = {
   contentsUrl(slug){
     return `https://api.github.com/repos/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPO}/contents/${CONFIG.MENUS_PATH}/${slug}.json`;
   },
+  htmlContentsUrl(slug){
+    return `https://api.github.com/repos/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPO}/contents/${CONFIG.MENUS_PATH}/${slug}.html`;
+  },
   async getFile(slug){
     const res = await fetch(this.contentsUrl(slug) + `?ref=${CONFIG.GITHUB_BRANCH}`, { headers: this.headers() });
     if (res.status === 404) return null;
@@ -429,9 +452,43 @@ const gh = {
     }
     return res.json();
   },
+  // Same idea as getFile/putFile, but for the raw generated .html file
+  // (plain text content, not JSON-encoded).
+  async getHtmlFile(slug){
+    const res = await fetch(this.htmlContentsUrl(slug) + `?ref=${CONFIG.GITHUB_BRANCH}`, { headers: this.headers() });
+    if (res.status === 404) return null;
+    if (!res.ok) throw new Error(`GitHub read failed (${res.status})`);
+    const json = await res.json();
+    return { sha: json.sha, html: b64DecodeUnicode(json.content) };
+  },
+  async putHtmlFile(slug, htmlStr, sha, message, _retried){
+    const body = {
+      message: message || `Update menu page: ${slug}`,
+      content: b64EncodeUnicode(htmlStr),
+      branch: CONFIG.GITHUB_BRANCH,
+    };
+    if (sha) body.sha = sha;
+    const res = await fetch(this.htmlContentsUrl(slug), {
+      method: 'PUT',
+      headers: { ...this.headers(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (res.status === 409 && !_retried){
+      const fresh = await this.getHtmlFile(slug);
+      return this.putHtmlFile(slug, htmlStr, fresh ? fresh.sha : null, message, true);
+    }
+    if (!res.ok){
+      const err = await res.text();
+      throw new Error(`GitHub write failed (${res.status}): ${err}`);
+    }
+    return res.json();
+  },
   // Public read path — works without a token if the repo is public.
   rawUrl(slug){
     return `https://raw.githubusercontent.com/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPO}/${CONFIG.GITHUB_BRANCH}/${CONFIG.MENUS_PATH}/${slug}.json?_=${Date.now()}`;
+  },
+  rawHtmlUrl(slug){
+    return `https://raw.githubusercontent.com/${CONFIG.GITHUB_OWNER}/${CONFIG.GITHUB_REPO}/${CONFIG.GITHUB_BRANCH}/${CONFIG.MENUS_PATH}/${slug}.html?_=${Date.now()}`;
   },
 };
 
@@ -550,6 +607,75 @@ function mergeMenus(base, delta){
   return merged;
 }
 
+// Builds a copy of menuData safe to hand to the AI as a prompt: every item
+// image (which can be a huge base64 string) is swapped for a short token.
+// The model only ever has to write the token into an <img src>, never the
+// actual image bytes — keeps the prompt/response small and avoids the model
+// mangling long base64 strings.
+function buildImagePlaceholders(menuData){
+  const placeholders = [];
+  const promptData = JSON.parse(JSON.stringify(menuData));
+  let i = 0;
+  (promptData.sections || []).forEach(section => {
+    (section.items || []).forEach(item => {
+      if (item.image){
+        const token = `__MENU_IMG_${i++}__`;
+        placeholders.push({ token, value: item.image });
+        item.image = token;
+      }
+    });
+  });
+  return { promptData, placeholders };
+}
+
+// Generates a complete, self-contained, uniquely-designed HTML page for one
+// menu. Returns the final HTML string with real image sources substituted
+// back in for the placeholder tokens.
+async function generateMenuHtml(menuData){
+  const { promptData, placeholders } = buildImagePlaceholders(menuData);
+  const instruction = `Design a beautiful, unique, self-contained restaurant menu web page for
+the following menu data (JSON below). Output ONLY the complete HTML document — starting with
+<!DOCTYPE html> and ending with </html> — no markdown fences, no commentary before or after.
+
+Requirements:
+- Single file: inline <style> only, no external CSS/JS files. You may link Google Fonts via
+  <link> tags if you want a distinctive typeface.
+- Make real, specific design choices — a color palette, a type pairing, a layout — that suit
+  this particular restaurant's name/vibe. Avoid a generic templated look; avoid the obvious
+  "cream background, one accent color, centered serif heading" default. Every menu should look
+  different from the last.
+- Responsive: must look good from ~375px mobile width up to desktop.
+- Show the restaurant name and tagline (if present) prominently, then each section as a
+  clear group heading, then items with name, description (if present), and price aligned
+  cleanly (e.g. dotted leader or right-aligned column) — don't let long descriptions collide
+  with prices.
+- For any item whose "image" field is set, include an <img> tag with src set to EXACTLY that
+  string, unmodified (it's a placeholder token, not a real URL — just copy it verbatim), sized
+  and styled tastefully (e.g. a small thumbnail or a rounded square). For items with no
+  "image" field, don't add an image element for them.
+- No lorem ipsum, no placeholder items — use only the data given.
+- No JavaScript needed; this is a static display page.
+
+Menu data:
+${JSON.stringify(promptData)}`;
+
+  const raw = await groqChat([{ role: 'user', content: instruction }], {
+    reasoningEffort: 'low',
+    maxTokens: 8000,
+  });
+
+  // Be defensive about stray commentary/fences around the HTML.
+  let html = raw.trim().replace(/^```(html)?/i, '').replace(/```$/, '').trim();
+  const start = html.indexOf('<!DOCTYPE');
+  const startAlt = start === -1 ? html.indexOf('<html') : start;
+  if (startAlt > 0) html = html.slice(startAlt);
+  const end = html.lastIndexOf('</html>');
+  if (end !== -1) html = html.slice(0, end + '</html>'.length);
+
+  placeholders.forEach(p => { html = html.split(p.token).join(p.value); });
+  return html;
+}
+
 // Finds a photo for a menu item with no uploaded photo, using Wikimedia
 // Commons' free, no-key, CORS-enabled search API. Best-effort — returns null
 // on no match or any failure, which is fine, the item just shows no image.
@@ -620,11 +746,19 @@ window.addEventListener('hashchange', boot);
 async function renderMenuView(slug){
   const app = $('#app');
   app.innerHTML = '';
+  app.classList.remove('generated-mode');
   const wrap = el('div');
   wrap.appendChild(loadingHead('Loading menu…'));
   app.appendChild(wrap);
 
   try {
+    const htmlRes = await fetch(gh.rawHtmlUrl(slug));
+    if (htmlRes.ok){
+      const htmlText = await htmlRes.text();
+      renderGeneratedMenuPage(htmlText, slug);
+      return;
+    }
+
     const res = await fetch(gh.rawUrl(slug));
     if (res.status === 404){
       app.innerHTML = '';
@@ -638,6 +772,25 @@ async function renderMenuView(slug){
     app.innerHTML = '';
     app.appendChild(stateMsg(`Couldn't load this menu. ${e.message}`, 'Back to start'));
   }
+}
+
+// Renders an AI-generated menu page full-bleed in a sandboxed iframe, with a
+// small floating "Update this menu" control the generated page itself
+// doesn't know about.
+function renderGeneratedMenuPage(htmlText, slug){
+  const app = $('#app');
+  app.innerHTML = '';
+  app.classList.add('generated-mode');
+
+  const iframe = document.createElement('iframe');
+  iframe.className = 'generated-frame';
+  iframe.setAttribute('sandbox', 'allow-same-origin');
+  iframe.srcdoc = htmlText;
+  app.appendChild(iframe);
+
+  const editBtn = el('button', 'edit-fab edit-fab-floating', 'Update this menu');
+  editBtn.onclick = () => { goToEdit(slug); };
+  app.appendChild(editBtn);
 }
 
 function stateMsg(text, linkText){
@@ -661,6 +814,7 @@ function loadingHead(text){
 function renderMenuData(data, slug){
   const app = $('#app');
   app.innerHTML = '';
+  app.classList.remove('generated-mode');
 
   const head = el('div', 'ticket-head');
   head.appendChild(el('div', 'kicker', 'MENU TICKET'));
@@ -723,6 +877,7 @@ function renderMenuData(data, slug){
 function renderCreator(editSlug){
   const app = $('#app');
   app.innerHTML = '';
+  app.classList.remove('generated-mode');
 
   const head = el('div', 'ticket-head');
   head.appendChild(el('div', 'kicker', 'MENU TICKET'));
@@ -857,24 +1012,25 @@ function renderCreator(editSlug){
   }
 
   const SYSTEM_PROMPT = `You are a friendly menu-building assistant for a restaurant/cafe owner.
-Your job is to have a short, natural conversation to collect a menu: the business name, an
-optional one-line tagline, and one or more sections (e.g. Starters, Mains, Drinks), each with
-items that have a name, an optional short description, and a price (include currency symbol
-if the user gives one). Ask brief, specific follow-up questions one at a time — don't
-interrogate with a long list at once. Confirm items back briefly so the user can correct
-mistakes. When the user seems done, tell them they can hit "Commit & publish" whenever ready.
-Keep replies short (2-4 sentences). Sometimes a user message will include a bracketed note
-like "[Read from a reference menu photo]" (text automatically transcribed from a menu/price
-list photo — treat those listed items as if the user typed them) or "[Photo attached of a
-dish, looks like: X]" (the user attached a photo of an actual dish — confirm the dish name
-matches an item they've mentioned, or ask which item it's for if unclear).`;
+The business name is already fixed (given below) — never ask for it or ask to confirm it
+unless the user brings it up themselves. Your job is to have a short, natural conversation to
+collect the rest: an optional one-line tagline, and one or more sections (e.g. Starters,
+Mains, Drinks), each with items that have a name, an optional short description, and a price
+(include currency symbol if the user gives one). Ask brief, specific follow-up questions one
+at a time — don't interrogate with a long list at once. Confirm items back briefly so the user
+can correct mistakes. When the user seems done, tell them they can hit "Commit & publish"
+whenever ready. Keep replies short (2-4 sentences). Sometimes a user message will include a
+bracketed note like "[Read from a reference menu photo]" (text automatically transcribed from
+a menu/price list photo — treat those listed items as if the user typed them) or "[Photo
+attached of a dish, looks like: X]" (the user attached a photo of an actual dish — confirm the
+dish name matches an item they've mentioned, or ask which item it's for if unclear).`;
 
   async function sendTurn(){
     const text = textarea.value.trim();
     if (!text && state.pendingImages.length === 0) return;
 
     if (state.phase === 'ask_name'){
-      if (!text){ addMessage('bot', 'What name should this menu be published under?'); return; }
+      if (!text){ addMessage('bot', "What's your business called?"); return; }
       const slug = slugify(text);
       if (!slug){ addMessage('bot', "That name didn't leave any usable characters — try again with letters or numbers."); textarea.value=''; return; }
       addMessage('user', text);
@@ -884,7 +1040,7 @@ matches an item they've mentioned, or ask which item it's for if unclear).`;
         const existing = await gh.getFile(slug);
         setTyping(false);
         if (existing && !editSlug){
-          addMessage('bot', `"${text}" is already taken. Try another customer name.`);
+          addMessage('bot', `"${text}" is already taken. Try another business name.`);
           setBusy(false);
           return;
         }
@@ -895,14 +1051,19 @@ matches an item they've mentioned, or ask which item it's for if unclear).`;
         if (existing){
           state.messages.push({ role: 'system', content: `${SYSTEM_PROMPT}
 
+Business name: ${existing.data.restaurantName || text}
 The user is editing an EXISTING published menu, not starting a new one — do not ask for the
-restaurant name, tagline, or any item already present below unless the user wants to change it.
-Here is the current menu as JSON, already confirmed and live:
+tagline or any item already present below unless the user wants to change it. Here is the
+current menu as JSON, already confirmed and live:
 ${JSON.stringify(existing.data)}` });
           addMessage('bot', `Loaded the current menu for "${text}". What would you like to change?`);
         } else {
-          state.messages.push({ role: 'system', content: SYSTEM_PROMPT });
-          addMessage('bot', `Got it — this will publish at /${slug}. What kind of menu are we building (cafe, restaurant, food truck…) and what's it called?`);
+          state.messages.push({ role: 'system', content: `${SYSTEM_PROMPT}
+
+Business name: ${text}
+This is a brand new menu. Start by asking for an optional one-line tagline (or whether to
+skip it), then move straight into collecting sections and items.` });
+          addMessage('bot', `Got it — "${text}" will publish at /${slug}. Want to add a short tagline, or should we skip that and jump into the menu items?`);
         }
       } catch (e){
         setTyping(false);
@@ -983,6 +1144,7 @@ conversation — new or changed items and sections. Do not invent items that wer
       // existed before this session — never regenerate the whole thing from
       // a short conversation, or anything not mentioned gets lost.
       const menuData = state.existingMenuData ? mergeMenus(state.existingMenuData, delta) : delta;
+      menuData.restaurantName = state.displayName;
 
       const allItems = (menuData.sections || []).flatMap(s => s.items || []);
 
@@ -1017,10 +1179,17 @@ conversation — new or changed items and sections. Do not invent items that wer
 
       menuData.updatedAt = new Date().toISOString();
 
-      addNote('Publishing to GitHub…');
+      addNote('Publishing menu data…');
       const result = await gh.putFile(state.slug, menuData, state.sha, `${state.sha ? 'Update' : 'Create'} menu: ${state.slug}`);
       state.sha = result.content.sha;
       state.existingMenuData = menuData;
+
+      addNote('Designing your menu page…');
+      const html = await generateMenuHtml(menuData);
+      const existingHtml = await gh.getHtmlFile(state.slug);
+      await gh.putHtmlFile(state.slug, html, existingHtml ? existingHtml.sha : null,
+        `${existingHtml ? 'Update' : 'Create'} menu page: ${state.slug}`);
+
       addNote('Published.');
       addMessage('bot', `Done — your menu is live at:`);
       addQrBlock(state.slug);
@@ -1036,7 +1205,7 @@ conversation — new or changed items and sections. Do not invent items that wer
     textarea.value = editSlug;
     sendTurn();
   } else {
-    addMessage('bot', "Hi! What customer name should this menu be published under? (This becomes the page's web address.)");
+    addMessage('bot', "Hi! What's your business called? (This also becomes your menu's web address.)");
   }
 }
 
