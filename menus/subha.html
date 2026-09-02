@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Subha Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f9f5f0;
+    --primary: #2b4f5f;
+    --accent: #c97c5d;
+    --text: #332f2b;
+    --muted: #777;
+  }
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 1rem;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--primary);
+    margin-bottom: .3rem;
+  }
+  .tagline { font-size: 1.1rem; color: var(--muted); }
+  .menu-section {
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: .3rem;
+    margin-bottom: 1rem;
+  }
+  .item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px dotted var(--muted);
+    padding-bottom: .6rem;
+  }
+  .item-img {
+    flex: 0 0 80px;
+    height: 80px;
+    margin-right: 1rem;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .item-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .item-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .item-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--primary);
+  }
+  .item-price {
+    font-weight: 500;
+    color: var(--accent);
+    white-space: nowrap;
+    margin-left: .5rem;
+  }
+  .item-description {
+    font-size: .9rem;
+    color: var(--muted);
+    margin-top: .3rem;
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 2.2rem; }
+    .section-title { font-size: 1.6rem; }
+    .item { flex-direction: column; }
+    .item-img { margin-bottom: .5rem; }
+    .item-header { flex-direction: column; align-items: flex-start; }
+    .item-price { margin-top: .2rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Subha</h1>
+  <p class="tagline"></p>
+</header>
+
+<main>
+  <section class="menu-section">
+    <h2 class="section-title">Starters</h2>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Lentil_Soup_-_Schnitzel_%26_Co._2026-05-16.jpg/330px-Lentil_Soup_-_Schnitzel_%26_Co._2026-05-16.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Spiced Lentil Soup"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Spiced Lentil Soup</span>
+          <span class="item-price">$4.50</span>
+        </div>
+        <p class="item-description">Warm, silky soup with cumin, coriander & a drizzle of lemon oil</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Crispy Halloumi Bites</span>
+          <span class="item-price">$5.25</span>
+        </div>
+        <p class="item-description">Golden‑fried halloumi, mint‑yogurt dip</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Deliciously_healthy_family_meals_%28IA_CAT31314486%29.pdf/page1-330px-Deliciously_healthy_family_meals_%28IA_CAT31314486%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Avocado & Tomato Bruschetta"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Avocado & Tomato Bruschetta</span>
+          <span class="item-price">$5.00</span>
+        </div>
+        <p class="item-description">Toasted sourdough, smashed avocado, heirloom tomatoes, balsamic glaze</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="section-title">Mains</h2>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Nasi_ayam%2C_Emado%27s_Shawarma_Embong_Malang%2C_Surabaya%2C_2025_%2801%29.jpg/330px-Nasi_ayam%2C_Emado%27s_Shawarma_Embong_Malang%2C_Surabaya%2C_2025_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Grilled Chicken Shawarma Plate"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Grilled Chicken Shawarma Plate</span>
+          <span class="item-price">$11.95</span>
+        </div>
+        <p class="item-description">Marinated chicken, saffron rice, pickled veggies, garlic sauce</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/64/Paneer_Tikka_Masala_%282026%29_01.jpg/330px-Paneer_Tikka_Masala_%282026%29_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Paneer Tikka Masala"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Paneer Tikka Masala</span>
+          <span class="item-price">$10.50</span>
+        </div>
+        <p class="item-description">Char‑grilled paneer in a rich tomato‑cream sauce, basmati rice</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Owner%27s_manual_for_your_body_-_how_to_fuel_it_and_move_it_for_a_fun_and_healthy_life_%28IA_CAT31307267%29.pdf/page1-330px-Owner%27s_manual_for_your_body_-_how_to_fuel_it_and_move_it_for_a_fun_and_healthy_life_%28IA_CAT31307267%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mediterranean Veggie Bowl"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Mediterranean Veggie Bowl</span>
+          <span class="item-price">$9.75</span>
+        </div>
+        <p class="item-description">Quinoa, roasted zucchini, roasted red peppers, feta, lemon‑herb vinaigrette</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="section-title">Desserts</h2>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Colonial_and_Indian_Exhibition%2C_1886._Empire_of_India._Special_catalogue_of_exhibits_by_the_Government_of_India_and_private_exhibitors._Royal_Commission_and_Government_of_India_silk_culture_court._%28IA_b29351789%29.pdf/page1-330px-thumbnail.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Cardamom Panna Cotta"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Cardamom Panna Cotta</span>
+          <span class="item-price">$4.80</span>
+        </div>
+        <p class="item-description">Silky cream topped with pistachio crumble</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Coconut_Panna_Cotta_-_jasmine_rice_sorbet%2C_almond%2C_mango_%2814577449368%29.jpg/330px-Coconut_Panna_Cotta_-_jasmine_rice_sorbet%2C_almond%2C_mango_%2814577449368%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mango Coconut Sorbet"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Mango Coconut Sorbet</span>
+          <span class="item-price">$4.20</span>
+        </div>
+        <p class="item-description">Refreshingly dairy‑free sorbet with a hint of lime</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section">
+    <h2 class="section-title">Drinks</h2>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Eating_archaeology_-_the_official_gag_me_with_a_trowel_cookbook%2C_1983_%28IA_eatingarchaeolog00gros%29.pdf/page1-330px-Eating_archaeology_-_the_official_gag_me_with_a_trowel_cookbook%2C_1983_%28IA_eatingarchaeolog00gros%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Classic Mint Lemonade"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Classic Mint Lemonade</span>
+          <span class="item-price">$2.95</span>
+        </div>
+        <p class="item-description">Fresh mint, lemon, a touch of honey</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/Pacific_connection_-_USACE-p16021coll8-848.pdf/page1-330px-Pacific_connection_-_USACE-p16021coll8-848.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Cold Brew Espresso"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Cold Brew Espresso</span>
+          <span class="item-price">$3.25</span>
+        </div>
+        <p class="item-description">Smooth, low‑acid cold brew</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-img"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Salads%3B_their_uses_as_food_%26_medicine%2C_with_50_useful_salad_recipes_%28IA_saladstheirusesa00broa%29.pdf/page1-330px-Salads%3B_their_uses_as_food_%26_medicine%2C_with_50_useful_salad_recipes_%28IA_saladstheirusesa00broa%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Rosemary‑Infused Iced Tea"></div>
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Rosemary‑Infused Iced Tea</span>
+          <span class="item-price">$2.80</span>
+        </div>
+        <p class="item-description">Light black tea with rosemary sprig</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
