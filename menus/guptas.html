@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GUPTAS Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --primary:#2C3E50;
+    --secondary:#E74C3C;
+    --accent:#F1C40F;
+    --bg:#FAF9F6;
+    --text:#333;
+    --muted:#777;
+  }
+  body {
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height:1.5;
+  }
+  header {
+    background: var(--primary);
+    color:#fff;
+    padding:2rem 1rem;
+    text-align:center;
+    position:relative;
+  }
+  header::after {
+    content:"";
+    position:absolute;
+    bottom:-20px;
+    left:50%;
+    transform:translateX(-50%);
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--primary);
+  }
+  h1 {
+    margin:0;
+    font-family: 'Merriweather', serif;
+    font-weight:700;
+    font-size:2.5rem;
+    letter-spacing:1.5px;
+  }
+  p.tagline {
+    margin:0.5rem 0 0;
+    font-size:1rem;
+    opacity:0.9;
+  }
+  .menu {
+    max-width:1200px;
+    margin:4rem auto 2rem;
+    padding:0 1rem;
+  }
+  .section {
+    margin-bottom:3rem;
+  }
+  .section h2 {
+    font-family: 'Merriweather', serif;
+    font-weight:600;
+    font-size:1.8rem;
+    color: var(--secondary);
+    border-bottom:2px solid var(--accent);
+    padding-bottom:0.3rem;
+    margin-bottom:1.5rem;
+  }
+  .item {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    margin-bottom:1.2rem;
+    gap:0.8rem;
+  }
+  .item img {
+    width:80px;
+    height:80px;
+    object-fit:cover;
+    border-radius:8px;
+    flex-shrink:0;
+  }
+  .item-details {
+    flex:1 1 0;
+    min-width:0;
+  }
+  .item-name {
+    font-weight:600;
+    font-size:1.1rem;
+    margin:0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .price {
+    font-family: 'Merriweather', serif;
+    color: var(--secondary);
+    white-space:nowrap;
+    margin-left:1rem;
+  }
+  .item-description {
+    margin:0.3rem 0 0;
+    color: var(--muted);
+    font-size:0.95rem;
+  }
+  @media (max-width:600px) {
+    header { padding:1.5rem 0.5rem; }
+    h1 { font-size:2rem; }
+    .item { flex-direction:column; align-items:flex-start; }
+    .item img { width:100%; height:auto; border-radius:4px; }
+    .item-name { flex-direction:column; align-items:flex-start; }
+    .price { margin-left:0; margin-top:0.3rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>GUPTAS</h1>
+  <p class="tagline">Your neighborhood family restaurant</p>
+</header>
+
+<main class="menu">
+  <section class="section">
+    <h2>Starters</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Food_views_in_the_news%3B_a_weekly_service_for_food_editors_of_western_dailies_%28IA_foodviewsinnews1944unit_5%29.pdf/page1-330px-Food_views_in_the_news%3B_a_weekly_service_for_food_editors_of_western_dailies_%28IA_foodviewsinnews1944unit_5%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Garden Veg Spring Rolls">
+      <div class="item-details">
+        <p class="item-name"><span>Garden Veg Spring Rolls</span><span class="price">$5.99</span></p>
+        <p class="item-description">Crispy rolls stuffed with cabbage, carrots & glass noodles, served with sweet‑chili dip</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Bruschetta_with_tomato_and_basil_dishes.jpg/330px-Bruschetta_with_tomato_and_basil_dishes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Tomato Basil Bruschetta">
+      <div class="item-details">
+        <p class="item-name"><span>Tomato Basil Bruschetta</span><span class="price">$4.79</span></p>
+        <p class="item-description">Toasted baguette topped with diced tomatoes, fresh basil, garlic & olive oil</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Skewered_paneer.JPG/330px-Skewered_paneer.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Spiced Paneer Skewers">
+      <div class="item-details">
+        <p class="item-name"><span>Spiced Paneer Skewers</span><span class="price">$6.49</span></p>
+        <p class="item-description">Grilled Indian cottage cheese cubes marinated in cumin, coriander & yogurt</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Mains</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Vegetable_Lasagna_10-07_to_22_439.jpg/330px-Vegetable_Lasagna_10-07_to_22_439.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Vegetable Lasagna">
+      <div class="item-details">
+        <p class="item-name"><span>Vegetable Lasagna</span><span class="price">$12.99</span></p>
+        <p class="item-description">Layers of pasta, ricotta, marinara, spinach & roasted veggies</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Risotto_of_leek%2C_mushroom%2C_pea%2C_spinach_-_Relish_Food_Store_AUD14_%284139673555%29.jpg/330px-Risotto_of_leek%2C_mushroom%2C_pea%2C_spinach_-_Relish_Food_Store_AUD14_%284139673555%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mushroom & Spinach Risotto">
+      <div class="item-details">
+        <p class="item-name"><span>Mushroom &amp; Spinach Risotto</span><span class="price">$13.49</span></p>
+        <p class="item-description">Creamy Arborio rice with wild mushrooms, spinach & Parmesan</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Chickpea_Curry_%2857189%29.jpg/330px-Chickpea_Curry_%2857189%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chickpea Curry">
+      <div class="item-details">
+        <p class="item-name"><span>Chickpea Curry</span><span class="price">$11.99</span></p>
+        <p class="item-description">Slow‑cooked chickpeas in a tomato‑coconut sauce, served with basmati rice</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Sides</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Liat_Portal_for_Foodie_Disorder_-_Grilled_Salmon_with_Roasted_Potatoes_and_Asparagus.jpg/330px-Liat_Portal_for_Foodie_Disorder_-_Grilled_Salmon_with_Roasted_Potatoes_and_Asparagus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Garlic Herb Roasted Potatoes">
+      <div class="item-details">
+        <p class="item-name"><span>Garlic Herb Roasted Potatoes</span><span class="price">$4.29</span></p>
+        <p class="item-description">Crispy potatoes tossed with garlic, rosemary & thyme</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Team_Nutrition%27s_food%2C_family_and_fun_-_a_seasonal_guide_to_healthy_eating_-_commemorating_50_years_of_school_lunch_%28IA_CAT10752871%29.pdf/page1-330px-Team_Nutrition%27s_food%2C_family_and_fun_-_a_seasonal_guide_to_healthy_eating_-_commemorating_50_years_of_school_lunch_%28IA_CAT10752871%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Seasonal Grilled Veggies">
+      <div class="item-details">
+        <p class="item-name"><span>Seasonal Grilled Veggies</span><span class="price">$4.79</span></p>
+        <p class="item-description">Zucchini, bell peppers, and asparagus brushed with olive oil</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Mixed_green_salad.jpg/330px-Mixed_green_salad.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mixed Green Salad">
+      <div class="item-details">
+        <p class="item-name"><span>Mixed Green Salad</span><span class="price">$3.99</span></p>
+        <p class="item-description">Fresh lettuce, cucumber, cherry tomatoes, with balsamic vinaigrette</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Desserts</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/2020-09-09_22_50_42_The_apple_pie_dessert_in_a_Hungry-Man_Classic_Fried_Chicken_Strips_meal_after_heating_in_Rochelle_Park_Township%2C_Bergen_County%2C_New_Jersey.jpg/330px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Classic Apple Pie">
+      <div class="item-details">
+        <p class="item-name"><span>Classic Apple Pie</span><span class="price">$5.49</span></p>
+        <p class="item-description">Warm apple filling with a flaky crust, served with vanilla ice‑cream</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/The_snack_jar_plan_%28IA_CAT11013047%29.pdf/page1-330px-The_snack_jar_plan_%28IA_CAT11013047%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chocolate Brownie Sundae">
+      <div class="item-details">
+        <p class="item-name"><span>Chocolate Brownie Sundae</span><span class="price">$5.99</span></p>
+        <p class="item-description">Rich brownie topped with chocolate sauce, whipped cream & cherry</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-details">
+        <p class="item-name"><span>Mango Lassi Parfait</span><span class="price">$4.99</span></p>
+        <p class="item-description">Layers of mango puree, yogurt & crunchy granola</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Drinks</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Delicious_fresh_lemonade_in_a_bag_%287446556720%29.jpg/330px-Delicious_fresh_lemonade_in_a_bag_%287446556720%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Fresh Lemonade">
+      <div class="item-details">
+        <p class="item-name"><span>Fresh Lemonade</span><span class="price">$2.99</span></p>
+        <p class="item-description">House‑made with real lemons and a hint of mint</p>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-details">
+        <p class="item-name"><span>Iced Masala Chai</span><span class="price">$3.49</span></p>
+        <p class="item-description">Spiced tea served over ice with milk & a touch of honey</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/President%27s_Choice_Sparkling_Water%2C_Root_Beer_Flavour_%28English_side%29%2C_2026-02-13.jpg/330px-President%27s_Choice_Sparkling_Water%2C_Root_Beer_Flavour_%28English_side%29%2C_2026-02-13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Sparkling Water">
+      <div class="item-details">
+        <p class="item-name"><span>Sparkling Water</span><span class="price">$1.99</span></p>
+        <p class="item-description">Plain or lime‑infused</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
