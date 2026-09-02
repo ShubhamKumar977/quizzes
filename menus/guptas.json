@@ -1,0 +1,120 @@
+{
+  "restaurantName": "GUPTAS",
+  "tagline": "Your neighborhood family restaurant",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Garden Veg Spring Rolls",
+          "description": "Crispy rolls stuffed with cabbage, carrots & glass noodles, served with sweet‑chili dip",
+          "price": "$5.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Food_views_in_the_news%3B_a_weekly_service_for_food_editors_of_western_dailies_%28IA_foodviewsinnews1944unit_5%29.pdf/page1-330px-Food_views_in_the_news%3B_a_weekly_service_for_food_editors_of_western_dailies_%28IA_foodviewsinnews1944unit_5%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Tomato Basil Bruschetta",
+          "description": "Toasted baguette topped with diced tomatoes, fresh basil, garlic & olive oil",
+          "price": "$4.79",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Bruschetta_with_tomato_and_basil_dishes.jpg/330px-Bruschetta_with_tomato_and_basil_dishes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Spiced Paneer Skewers",
+          "description": "Grilled Indian cottage cheese cubes marinated in cumin, coriander & yogurt",
+          "price": "$6.49",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Skewered_paneer.JPG/330px-Skewered_paneer.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Vegetable Lasagna",
+          "description": "Layers of pasta, ricotta, marinara, spinach & roasted veggies",
+          "price": "$12.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Vegetable_Lasagna_10-07_to_22_439.jpg/330px-Vegetable_Lasagna_10-07_to_22_439.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mushroom & Spinach Risotto",
+          "description": "Creamy Arborio rice with wild mushrooms, spinach & Parmesan",
+          "price": "$13.49",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Risotto_of_leek%2C_mushroom%2C_pea%2C_spinach_-_Relish_Food_Store_AUD14_%284139673555%29.jpg/330px-Risotto_of_leek%2C_mushroom%2C_pea%2C_spinach_-_Relish_Food_Store_AUD14_%284139673555%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Chickpea Curry",
+          "description": "Slow‑cooked chickpeas in a tomato‑coconut sauce, served with basmati rice",
+          "price": "$11.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Chickpea_Curry_%2857189%29.jpg/330px-Chickpea_Curry_%2857189%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Sides",
+      "items": [
+        {
+          "name": "Garlic Herb Roasted Potatoes",
+          "description": "Crispy potatoes tossed with garlic, rosemary & thyme",
+          "price": "$4.29",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Liat_Portal_for_Foodie_Disorder_-_Grilled_Salmon_with_Roasted_Potatoes_and_Asparagus.jpg/330px-Liat_Portal_for_Foodie_Disorder_-_Grilled_Salmon_with_Roasted_Potatoes_and_Asparagus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Seasonal Grilled Veggies",
+          "description": "Zucchini, bell peppers, and asparagus brushed with olive oil",
+          "price": "$4.79",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a0/Team_Nutrition%27s_food%2C_family_and_fun_-_a_seasonal_guide_to_healthy_eating_-_commemorating_50_years_of_school_lunch_%28IA_CAT10752871%29.pdf/page1-330px-Team_Nutrition%27s_food%2C_family_and_fun_-_a_seasonal_guide_to_healthy_eating_-_commemorating_50_years_of_school_lunch_%28IA_CAT10752871%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mixed Green Salad",
+          "description": "Fresh lettuce, cucumber, cherry tomatoes, with balsamic vinaigrette",
+          "price": "$3.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/eb/Mixed_green_salad.jpg/330px-Mixed_green_salad.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Classic Apple Pie",
+          "description": "Warm apple filling with a flaky crust, served with vanilla ice‑cream",
+          "price": "$5.49",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/2020-09-09_22_50_42_The_apple_pie_dessert_in_a_Hungry-Man_Classic_Fried_Chicken_Strips_meal_after_heating_in_Rochelle_Park_Township%2C_Bergen_County%2C_New_Jersey.jpg/330px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Chocolate Brownie Sundae",
+          "description": "Rich brownie topped with chocolate sauce, whipped cream & cherry",
+          "price": "$5.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/The_snack_jar_plan_%28IA_CAT11013047%29.pdf/page1-330px-The_snack_jar_plan_%28IA_CAT11013047%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mango Lassi Parfait",
+          "description": "Layers of mango puree, yogurt & crunchy granola",
+          "price": "$4.99"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Fresh Lemonade",
+          "description": "House‑made with real lemons and a hint of mint",
+          "price": "$2.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/83/Delicious_fresh_lemonade_in_a_bag_%287446556720%29.jpg/330px-Delicious_fresh_lemonade_in_a_bag_%287446556720%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Iced Masala Chai",
+          "description": "Spiced tea served over ice with milk & a touch of honey",
+          "price": "$3.49"
+        },
+        {
+          "name": "Sparkling Water",
+          "description": "Plain or lime‑infused",
+          "price": "$1.99",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/President%27s_Choice_Sparkling_Water%2C_Root_Beer_Flavour_%28English_side%29%2C_2026-02-13.jpg/330px-President%27s_Choice_Sparkling_Water%2C_Root_Beer_Flavour_%28English_side%29%2C_2026-02-13.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-02T05:48:04.901Z"
+}
