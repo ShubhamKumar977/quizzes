@@ -1,0 +1,125 @@
+{
+  "restaurantName": "PRASADS",
+  "tagline": "Flavors of tradition, served fresh daily.",
+  "sections": [
+    {
+      "title": "Starters",
+      "items": [
+        {
+          "name": "Spicy Chicken Tikka",
+          "description": "marinated chicken breast, char‑grilled, served with mint yogurt dip",
+          "price": "₹250",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Chicken_Tikka_Masala_Curry.png/330px-Chicken_Tikka_Masala_Curry.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Lobster Miso Soup",
+          "description": "silky broth with butter‑poached lobster, scallions, and a dash of sesame oil",
+          "price": "₹340"
+        },
+        {
+          "name": "Prawn Coconut Curry Bites",
+          "description": "tempura‑fried shrimp tossed in a fragrant coconut‑curry glaze",
+          "price": "₹280",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Fiji_Hindi_-_English_Dictionary.pdf/page1-330px-Fiji_Hindi_-_English_Dictionary.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Mains",
+      "items": [
+        {
+          "name": "Butter‑Garlic Chicken Masala",
+          "description": "tender chicken thighs simmered in a rich butter‑garlic tomato sauce, served with basmati rice",
+          "price": "₹420",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Butter_chicken_curry%2C_chana_masala%2C_garlic_naan%2C_samosa_%2824532684364%29.jpg/330px-Butter_chicken_curry%2C_chana_masala%2C_garlic_naan%2C_samosa_%2824532684364%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Grilled Lamb Chops",
+          "description": "rosemary‑marinated lamb chops, char‑grilled, with mint‑coriander chutney",
+          "price": "₹460",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/97/Freshippo_grilled_lamb_chops.jpg/330px-Freshippo_grilled_lamb_chops.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Goan Fish Curry",
+          "description": "firm white fish cooked in coconut‑spiced tamarind broth, with steamed rice",
+          "price": "₹380",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Traditional_Goan_fish-curry-rice_plate%2C_food_from_the_region_of_western_coastal_India.jpg/330px-Traditional_Goan_fish-curry-rice_plate%2C_food_from_the_region_of_western_coastal_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Spicy Prawn Biryani",
+          "description": "layered basmati rice with jumbo prawns, saffron, and aromatic spices",
+          "price": "₹440"
+        }
+      ]
+    },
+    {
+      "title": "Sides",
+      "items": [
+        {
+          "name": "Garlic Butter Shrimp Skewers",
+          "description": "sautéed shrimp with garlic butter and lemon zest",
+          "price": "₹210",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8d/2017_Inaugural_Luncheon_Recipes.pdf/page1-330px-2017_Inaugural_Luncheon_Recipes.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Masala Egg Roll",
+          "description": "spiced boiled eggs wrapped in flaky paratha, served with tamarind dip",
+          "price": "₹130",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Mughlai_Kheema_Paratha.JPG/330px-Mughlai_Kheema_Paratha.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Chicken Sausage Stir‑Fry",
+          "description": "sliced chicken sausages with bell peppers, onions, and soy‑ginger glaze",
+          "price": "₹190",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/ChristmasBreakfast.jpg/330px-ChristmasBreakfast.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Cardamom Pistachio Kulfi",
+          "description": "creamy frozen dessert topped with chopped pistachios",
+          "price": "₹120",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Kulfi_ice_cream_-_Hyderabad_Street_food_-_DSC_0025.jpg/330px-Kulfi_ice_cream_-_Hyderabad_Street_food_-_DSC_0025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mango Gulab Jamun",
+          "description": "soft fried milk‑balls soaked in mango‑scented syrup",
+          "price": "₹130",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/46/Typical_Wholesome_Bengali_Meal..jpg/330px-Typical_Wholesome_Bengali_Meal..jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Chocolate Mousse with Bacon Crumbles",
+          "description": "rich chocolate mousse finished with crisp bacon bits",
+          "price": "₹150",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Selection_and_preparation_of_food%2C_laboratory_manual_%28IA_selectionprepara00bevi%29.pdf/page1-330px-Selection_and_preparation_of_food%2C_laboratory_manual_%28IA_selectionprepara00bevi%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Drinks",
+      "items": [
+        {
+          "name": "Spiced Mango Lassi",
+          "description": "yogurt‑based mango drink with a hint of cardamom",
+          "price": "₹90",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Lassi-MB53.jpg/330px-Lassi-MB53.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mint Lemon Iced Tea",
+          "description": "fresh lemon tea infused with mint leaves",
+          "price": "₹80",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Farmers%27_Bulletin._No._1674%2C_1931_-_Food_for_children_%28IA_CAT10305428%29.pdf/page1-330px-Farmers%27_Bulletin._No._1674%2C_1931_-_Food_for_children_%28IA_CAT10305428%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Classic Mojito (non‑alcoholic)",
+          "description": "lime, mint, soda, and a splash of simple syrup",
+          "price": "₹100"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-02T06:00:06.981Z"
+}
