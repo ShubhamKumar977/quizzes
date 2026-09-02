@@ -498,12 +498,21 @@ async function groqChat(messages, { jsonOnly=false, model=null, reasoningEffort=
     model: model || CONFIG.GROQ_MODEL,
     messages,
     temperature: jsonOnly ? 0.2 : 0.7,
+    // Both our models (qwen3.6-27b and gpt-oss-120b) are reasoning models.
+    // Without this, reasoning/"thinking" tokens can consume the whole output
+    // budget, or get mixed into message.content ahead of the real answer —
+    // either way, whatever we're parsing out (JSON, HTML) comes back empty
+    // or truncated. "hidden" guarantees message.content is the final answer
+    // only, never chain-of-thought.
+    reasoning_format: 'hidden',
   };
-  // qwen3.6-27b (our vision model) has a "thinking" mode that can spend its
-  // whole output budget on reasoning tokens, leaving nothing for the actual
-  // answer — which then comes back truncated/invalid. "none" turns that off.
+  // qwen3.6-27b/qwen3.8-27b support 'none'/'default' (Qwen); gpt-oss-20b/120b
+  // support 'low'/'medium'/'high' — pass whichever the caller knows is valid
+  // for the model it's using.
   if (reasoningEffort) body.reasoning_effort = reasoningEffort;
-  if (maxTokens) body.max_tokens = maxTokens;
+  // Groq's current param name for these models is max_completion_tokens, not
+  // the older max_tokens.
+  if (maxTokens) body.max_completion_tokens = maxTokens;
   const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -663,6 +672,9 @@ ${JSON.stringify(promptData)}`;
     reasoningEffort: 'low',
     maxTokens: 8000,
   });
+  if (!raw || !raw.trim()){
+    throw new Error('The design model returned an empty response — try Commit & publish again.');
+  }
 
   // Be defensive about stray commentary/fences around the HTML.
   let html = raw.trim().replace(/^```(html)?/i, '').replace(/```$/, '').trim();
@@ -671,6 +683,10 @@ ${JSON.stringify(promptData)}`;
   if (startAlt > 0) html = html.slice(startAlt);
   const end = html.lastIndexOf('</html>');
   if (end !== -1) html = html.slice(0, end + '</html>'.length);
+
+  if (!/<html[\s>]/i.test(html)){
+    throw new Error("The design model's response didn't contain an HTML page — try Commit & publish again.");
+  }
 
   placeholders.forEach(p => { html = html.split(p.token).join(p.value); });
   return html;
