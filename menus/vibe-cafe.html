@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vibe cafe – Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf4ed;
+  --primary:#6b4f4f;
+  --accent:#c08b5e;
+  --text:#3b2d2d;
+  --muted:#7a5c5c;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Roboto',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  padding:1rem;
+}
+header{
+  text-align:center;
+  margin-bottom:2rem;
+}
+h1{
+  font-family:'Montserrat',sans-serif;
+  font-size:2.5rem;
+  color:var(--primary);
+  margin-bottom:.3rem;
+}
+p.tagline{
+  font-size:1.2rem;
+  color:var(--muted);
+}
+section{
+  margin-bottom:2.5rem;
+}
+h2{
+  font-family:'Montserrat',sans-serif;
+  font-size:1.8rem;
+  color:var(--accent);
+  border-bottom:2px solid var(--accent);
+  padding-bottom:.3rem;
+  margin-bottom:1rem;
+}
+.item{
+  display:flex;
+  align-items:center;
+  margin-bottom:1rem;
+  flex-wrap:wrap;
+}
+.item img{
+  width:60px;
+  height:60px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-right:1rem;
+  flex-shrink:0;
+}
+.item-details{
+  flex:1 1 0;
+  min-width:0;
+}
+.item-name{
+  font-weight:500;
+  font-size:1.1rem;
+  color:var(--primary);
+  display:flex;
+  justify-content:space-between;
+}
+.item-price{
+  white-space:nowrap;
+  margin-left:1rem;
+}
+.item-description{
+  font-size:.9rem;
+  color:var(--muted);
+  margin-top:.2rem;
+}
+@media (min-width:600px){
+  .item{
+    flex-wrap:nowrap;
+  }
+  .item-details{
+    min-width:200px;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Vibe cafe</h1>
+  <p class="tagline">Good vibes, great bites.</p>
+</header>
+
+<section>
+  <h2>Chai</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/Masala_Tea_-_2.jpg/330px-Masala_Tea_-_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Masala Chai">
+    <div class="item-details">
+      <div class="item-name"><span>Masala Chai</span><span class="item-price">₹20</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Cup_of_black_tea.JPG/330px-Cup_of_black_tea.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Black Tea">
+    <div class="item-details">
+      <div class="item-name"><span>Black Tea</span><span class="item-price">₹10</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Coffee</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/44/Black_Coffee_Foam.jpg/330px-Black_Coffee_Foam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Black Coffee">
+    <div class="item-details">
+      <div class="item-name"><span>Black Coffee</span><span class="item-price">₹50</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Cappuccino_myanmar.jpg/330px-Cappuccino_myanmar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Cappuccino">
+    <div class="item-details">
+      <div class="item-name"><span>Cappuccino</span><span class="item-price">₹100</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cb/Peanut_Crispy_and_Iced_Latte_-_The_Wildflower_Cafe_2025-08-26.jpg/330px-Peanut_Crispy_and_Iced_Latte_-_The_Wildflower_Cafe_2025-08-26.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Cafe Latte">
+    <div class="item-details">
+      <div class="item-name"><span>Cafe Latte</span><span class="item-price">₹110</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a1/Cold_Coffee_-_Home%2C_Noida_-_Uttar_Pradesh-_Photo1.jpg/330px-Cold_Coffee_-_Home%2C_Noida_-_Uttar_Pradesh-_Photo1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Cold Coffee">
+    <div class="item-details">
+      <div class="item-name"><span>Cold Coffee</span><span class="item-price">₹70</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Cold Beverages</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/The_second_book_of_stories_for_the_story-teller_%28IA_secondbookofstor00coef%29.pdf/page1-330px-The_second_book_of_stories_for_the_story-teller_%28IA_secondbookofstor00coef%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="KitKat Shake">
+    <div class="item-details">
+      <div class="item-name"><span>KitKat Shake</span><span class="item-price">₹130</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Burger_King_Pumpkin_Spice_Oreo_Shake_%2822940227122%29.jpg/330px-Burger_King_Pumpkin_Spice_Oreo_Shake_%2822940227122%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Oreo Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Oreo Shake</span><span class="item-price">₹140</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/53/Banana_shake.jpg/330px-Banana_shake.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Banana Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Banana Shake</span><span class="item-price">₹60</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Vanilla_Bean_Dream_Shake_%283850165121%29.jpg/330px-Vanilla_Bean_Dream_Shake_%283850165121%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Vanilla Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Vanilla Shake</span><span class="item-price">₹60</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Strawberry_milk_shake_%28cropped%29.jpg/330px-Strawberry_milk_shake_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Strawberry Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Strawberry Shake</span><span class="item-price">₹70</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Avocado_Chocolate_Shake%2C_July_2025.jpg/330px-Avocado_Chocolate_Shake%2C_July_2025.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chocolate Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Chocolate Shake</span><span class="item-price">₹70</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Food_news_for_consumers_%28IA_CAT82764316021%29.pdf/page1-330px-Food_news_for_consumers_%28IA_CAT82764316021%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Kiwi Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Kiwi Shake</span><span class="item-price">₹80</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Mango_Shake_2.jpg/330px-Mango_Shake_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mango Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Mango Shake</span><span class="item-price">₹60</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Mojito</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Travels_in_South_America_-_from_the_Pacific_Ocean_to_the_Atlantic_Ocean%2C_Volume_I.pdf/page1-330px-Travels_in_South_America_-_from_the_Pacific_Ocean_to_the_Atlantic_Ocean%2C_Volume_I.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Ocean Blue Lemonade">
+    <div class="item-details">
+      <div class="item-name"><span>Ocean Blue Lemonade</span><span class="item-price">₹110</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="item-details">
+      <div class="item-name"><span>Virgin Mojito</span><span class="item-price">₹100</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e9/Mojito_with_Indian_flag_color.jpg/330px-Mojito_with_Indian_flag_color.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mint Mojito">
+    <div class="item-details">
+      <div class="item-name"><span>Mint Mojito</span><span class="item-price">₹100</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bf/Watermelon_Mojito-Chennai-Tamil_Nadu-DED_001.jpg/330px-Watermelon_Mojito-Chennai-Tamil_Nadu-DED_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Watermelon Mojito">
+    <div class="item-details">
+      <div class="item-name"><span>Watermelon Mojito</span><span class="item-price">₹110</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Epic Shakes</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/My_three_years_at_Andover_%28IA_mythreeyearsatan00stru%29.pdf/page1-330px-My_three_years_at_Andover_%28IA_mythreeyearsatan00stru%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Snickers Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Snickers Shake</span><span class="item-price">₹170</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/Dry_fruit_shake-Pure_Milk_%26_Snacks_Center-Mumbai%2C_Maharashtra-007.jpg/330px-Dry_fruit_shake-Pure_Milk_%26_Snacks_Center-Mumbai%2C_Maharashtra-007.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Dry-Fruit Shake">
+    <div class="item-details">
+      <div class="item-name"><span>Dry-Fruit Shake</span><span class="item-price">₹170</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Chinese Starters</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f1/Veg_manchurian_Balls.jpg/330px-Veg_manchurian_Balls.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Veg Manchurian">
+    <div class="item-details">
+      <div class="item-name"><span>Veg Manchurian</span><span class="item-price">₹100</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Corn_and_its_uses_as_food_%28IA_CAT87203119%29.pdf/page1-330px-Corn_and_its_uses_as_food_%28IA_CAT87203119%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Corn Salt and Paper">
+    <div class="item-details">
+      <div class="item-name"><span>Corn Salt and Paper</span><span class="item-price">₹100</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/33/May%27s_Garden_Restaurant%2C_Ottawa_-_Kung_Pao_Chicken_%286454330343%29.jpg/330px-May%27s_Garden_Restaurant%2C_Ottawa_-_Kung_Pao_Chicken_%286454330343%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chilli Chicken Dry">
+    <div class="item-details">
+      <div class="item-name"><span>Chilli Chicken Dry</span><span class="item-price">₹130</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Food-Crispy-Baby-Corn.jpg/330px-Food-Crispy-Baby-Corn.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Crispy Baby Corn">
+    <div class="item-details">
+      <div class="item-name"><span>Crispy Baby Corn</span><span class="item-price">₹150</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Boneless_Chicken_fry.jpg/330px-Boneless_Chicken_fry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Schezwan Chicken">
+    <div class="item-details">
+      <div class="item-name"><span>Schezwan Chicken</span><span class="item-price">₹150</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Dragon_chicken_with_porotta.jpg/330px-Dragon_chicken_with_porotta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Dragon Chicken">
+    <div class="item-details">
+      <div class="item-name"><span>Dragon Chicken</span><span class="item-price">₹160</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/The_Food_%28Hot_Chilli_and_Hot_Chilli_Products%29_%28Emergency_Control%29_%28Wales%29_Regulations_2003_%28WSI_2003-2455_qp%29.pdf/page1-330px-The_Food_%28Hot_Chilli_and_Hot_Chilli_Products%29_%28Emergency_Control%29_%28Wales%29_Regulations_2003_%28WSI_2003-2455_qp%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chilli Paneer Dry">
+    <div class="item-details">
+      <div class="item-name"><span>Chilli Paneer Dry</span><span class="item-price">₹120</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/Mushroom_Manchurian_dry.jpg/330px-Mushroom_Manchurian_dry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chilli Mushroom Dry">
+    <div class="item-details">
+      <div class="item-name"><span>Chilli Mushroom Dry</span><span class="item-price">₹120</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Burgers</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/VEG_BURGER_AND_GARLIC_TOASTS.jpg/330px-VEG_BURGER_AND_GARLIC_TOASTS.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Veg Burger">
+    <div class="item-details">
+      <div class="item-name"><span>Veg Burger</span><span class="item-price">₹90</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Aloo_tikki_burger_%28homemade%29.jpg/330px-Aloo_tikki_burger_%28homemade%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Aloo Tikki Burger">
+    <div class="item-details">
+      <div class="item-name"><span>Aloo Tikki Burger</span><span class="item-price">₹80</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Burger-King-Chicken-Tenders.jpg/330px-Burger-King-Chicken-Tenders.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Burger">
+    <div class="item-details">
+      <div class="item-name"><span>Chicken Burger</span><span class="item-price">₹100</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/90/Chicken_Caesar_Burger_-_Leon_2024-10-27.jpg/330px-Chicken_Caesar_Burger_-_Leon_2024-10-27.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Cheese Burger">
+    <div class="item-details">
+      <div class="item-name"><span>Chicken Cheese Burger</span><span class="item-price">₹130</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8c/Burger_King_Doritos_Loaded_2_%2819132847954%29.jpg/330px-Burger_King_Doritos_Loaded_2_%2819132847954%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Loaded Burger">
+    <div class="item-details">
+      <div class="item-name"><span>Loaded Burger</span><span class="item-price">₹160</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Sandwiches</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Corn_veg_sandwich_%282026%29.jpg/330px-Corn_veg_sandwich_%282026%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Veg Sandwich">
+    <div class="item-details">
+      <div class="item-name"><span>Veg Sandwich</span><span class="item-price">₹60</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Corn_veg_sandwich_%282026%29.jpg/330px-Corn_veg_sandwich_%282026%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Veg Grilled Sandwich">
+    <div class="item-details">
+      <div class="item-name"><span>Veg Grilled Sandwich</span><span class="item-price">₹70</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/b/be/Grilled_cheese_sandwich_on_green_plate.jpg/330px-Grilled_cheese_sandwich_on_green_plate.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Corn Cheese Grilled Sandwich">
+    <div class="item-details">
+      <div class="item-name"><span>Corn Cheese Grilled Sandwich</span><span class="item-price">₹100</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f8/Sandwich_on_a_cutting_board.jpg/330px-Sandwich_on_a_cutting_board.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Club Sandwich">
+    <div class="item-details">
+      <div class="item-name"><span>Club Sandwich</span><span class="item-price">₹110</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Bacon_%26_Egg_Muffin%2C_Aroma_Caf%C3%A9_Northbridge%2C_2026_%2801%29.jpg/330px-Bacon_%26_Egg_Muffin%2C_Aroma_Caf%C3%A9_Northbridge%2C_2026_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Paper & Egg Sandwich">
+    <div class="item-details">
+      <div class="item-name"><span>Paper & Egg Sandwich</span><span class="item-price">₹120</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Fries</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Food_on_Mallorca_02.jpg/330px-Food_on_Mallorca_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="French Fries">
+    <div class="item-details">
+      <div class="item-name"><span>French Fries</span><span class="item-price">₹60</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Fries_%28Peri_Peri%29_2026.jpg/330px-Fries_%28Peri_Peri%29_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Peri Peri Fries">
+    <div class="item-details">
+      <div class="item-name"><span>Peri Peri Fries</span><span class="item-price">₹70</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Chinese Rice</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dd/First_lessons_in_food_and_diet_%28IA_firstlessonsinfo00rich%29.pdf/page1-330px-First_lessons_in_food_and_diet_%28IA_firstlessonsinfo00rich%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Veg Fried Rice (HALF)">
+    <div class="item-details">
+      <div class="item-name"><span>Veg Fried Rice (HALF)</span><span class="item-price">₹100</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Food_and_home_notes_%28IA_CAT73389163072%29.pdf/page1-330px-Food_and_home_notes_%28IA_CAT73389163072%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Veg Fried Rice (FULL)">
+    <div class="item-details">
+      <div class="item-name"><span>Veg Fried Rice (FULL)</span><span class="item-price">₹200</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="item-details">
+      <div class="item-name"><span>Schezwan Fried Rice (HALF)</span><span class="item-price">₹140</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Schewan_Rice-Diu-DSC004.jpg/330px-Schewan_Rice-Diu-DSC004.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Schezwan Fried Rice (FULL)">
+    <div class="item-details">
+      <div class="item-name"><span>Schezwan Fried Rice (FULL)</span><span class="item-price">₹280</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/Turmeric_rice_with_beef_rendang%2C_fried_chicken_wings_with_a_dark_soy_sauce_and_beansprouts_-_Minang_Nasi_Padang_AUD6.50_%2B_AUD0.50_%283158453383%29.jpg/330px-Turmeric_rice_with_beef_rendang%2C_fried_chicken_wings_with_a_dark_soy_sauce_and_beansprouts_-_Minang_Nasi_Padang_AUD6.50_%2B_AUD0.50_%283158453383%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Fried Rice (HALF)">
+    <div class="item-details">
+      <div class="item-name"><span>Chicken Fried Rice (HALF)</span><span class="item-price">₹140</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Jollof_and_fried_rice_with_grilled_fish_and_chicken_and_coleslaw.jpg/330px-Jollof_and_fried_rice_with_grilled_fish_and_chicken_and_coleslaw.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Fried Rice (FULL)">
+    <div class="item-details">
+      <div class="item-name"><span>Chicken Fried Rice (FULL)</span><span class="item-price">₹280</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/Taro_Leaf_Chhyaka_garnished_with_a_chilli%2C_Siliguri%2C_West_Bengal_DSC_0014.jpg/330px-Taro_Leaf_Chhyaka_garnished_with_a_chilli%2C_Siliguri%2C_West_Bengal_DSC_0014.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chilli Garlic Fried Rice (HALF)">
+    <div class="item-details">
+      <div class="item-name"><span>Chilli Garlic Fried Rice (HALF)</span><span class="item-price">₹140</span></div>
+    </div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/Schewan_Rice-Diu-DSC004.jpg/330px-Schewan_Rice-Diu-DSC004.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chilli Garlic Fried Rice (FULL)">
+    <div class="item-details">
+      <div class="item-name"><span>Chilli Garlic Fried Rice (FULL)</span><span class="item-price">₹280</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Chinese (Momos &amp; Rolls)</h2>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Veg Momo (HALF - 5 Pcs)</span><span class="item-price">₹50</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Veg Momo (FULL - 10 Pcs)</span><span class="item-price">₹100</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Cheese Momo (HALF - 5 Pcs)</span><span class="item-price">₹60</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Cheese Momo (FULL - 10 Pcs)</span><span class="item-price">₹110</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Veg Fry Momo (HALF - 5 Pcs)</span><span class="item-price">₹80</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Veg Fry Momo (FULL - 10 Pcs)</span><span class="item-price">₹120</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Chicken Momo (HALF - 5 Pcs)</span><span class="item-price">₹80</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Chicken Momo (FULL - 10 Pcs)</span><span class="item-price">₹150</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Fry Chicken Momo (HALF - 5 Pcs)</span><span class="item-price">₹90</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Fry Chicken Momo (FULL - 10 Pcs)</span><span class="item-price">₹160</span></div></div></div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Egg_roll_appetizer.jpg/330px-Egg_roll_appetizer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Egg Roll">
+    <div class="item-details"><div class="item-name"><span>Egg Roll</span><span class="item-price">₹49</span></div></div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Egg_Chicken_Roll_and_Samosa.jpg/330px-Egg_Chicken_Roll_and_Samosa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Egg Chicken Roll">
+    <div class="item-details"><div class="item-name"><span>Egg Chicken Roll</span><span class="item-price">₹70</span></div></div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Birds%27_nests%2C_eggs_and_egg-collecting_%28IA_birdsnestseggseg00keariala%29.pdf/page1-330px-Birds%27_nests%2C_eggs_and_egg-collecting_%28IA_birdsnestseggseg00keariala%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Double Egg Roll">
+    <div class="item-details"><div class="item-name"><span>Double Egg Roll</span><span class="item-price">₹60</span></div></div>
+  </div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Crispy Wings (6 Pcs)</span><span class="item-price">₹180</span></div></div></div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Food_distribution_order_%28IA_fooddistribution145unit%29.pdf/page1-330px-Food_distribution_order_%28IA_fooddistribution145unit%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Popcorn (Full)">
+    <div class="item-details"><div class="item-name"><span>Chicken Popcorn (Full)</span><span class="item-price">₹180</span></div></div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Food_and_home_notes_%28IA_CAT73389163213%29.pdf/page1-330px-Food_and_home_notes_%28IA_CAT73389163213%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Popcorn (Half)">
+    <div class="item-details"><div class="item-name"><span>Chicken Popcorn (Half)</span><span class="item-price">₹100</span></div></div>
+  </div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Crispy Boneless Chilli Chicken (Full)</span><span class="item-price">₹200</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Crispy Boneless Chilli Chicken (Half)</span><span class="item-price">₹100</span></div></div></div>
+</section>
+
+<section>
+  <h2>Noodles</h2>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Japan%27s_fast-food_industry_-_export_potential_for_U.S._products_%28IA_japansfastfoodin268dwos%29.pdf/page1-330px-Japan%27s_fast-food_industry_-_export_potential_for_U.S._products_%28IA_japansfastfoodin268dwos%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Hakka Noodles (HALF)">
+    <div class="item-details"><div class="item-name"><span>Chicken Hakka Noodles (HALF)</span><span class="item-price">₹120</span></div></div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Japan%27s_fast-food_industry_-_export_potential_for_U.S._products_%28IA_japansfastfoodin268dwos%29.pdf/page1-330px-Japan%27s_fast-food_industry_-_export_potential_for_U.S._products_%28IA_japansfastfoodin268dwos%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Hakka Noodles (FULL)">
+    <div class="item-details"><div class="item-name"><span>Chicken Hakka Noodles (FULL)</span><span class="item-price">₹240</span></div></div>
+  </div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Veg Hakka Noodles (HALF)</span><span class="item-price">₹100</span></div></div></div>
+  <div class="item"><div class="item-details"><div class="item-name"><span>Veg Hakka Noodles (FULL)</span><span class="item-price">₹200</span></div></div></div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Wikimania_2021_Drunken_Noodles_Recipe.pdf/page1-330px-Wikimania_2021_Drunken_Noodles_Recipe.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Chilli Garlic Noodles (HALF)">
+    <div class="item-details"><div class="item-name"><span>Chicken Chilli Garlic Noodles (HALF)</span><span class="item-price">₹120</span></div></div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Khao_Soi_with_chicken_THB20_-_Night_Market%2C_Kad_Suan_Kaew_%283455807164%29.jpg/330px-Khao_Soi_with_chicken_THB20_-_Night_Market%2C_Kad_Suan_Kaew_%283455807164%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Chicken Chilli Garlic Noodles (FULL)">
+    <div class="item-details"><div class="item-name"><span>Chicken Chilli Garlic Noodles (FULL)</span><span class="item-price">₹240</span></div></div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/The_market_basket_%28IA_CAT11085453007%29.pdf/page1-330px-The_market_basket_%28IA_CAT11085453007%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Veg Chilli Garlic Noodles (HALF)">
+    <div class="item-details"><div class="item-name"><span>Veg Chilli Garlic Noodles (HALF)</span><span class="item-price">₹110</span></div></div>
+  </div>
+  <div class="item">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/The_market_basket_%28IA_CAT11085453007%29.pdf/page1-330px-The_market_basket_%28IA_CAT11085453007%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Veg Chilli Garlic Noodles (FULL)">
+    <div class="item-details"><div class="item-name"><span>Veg Chilli Garlic Noodles (FULL)</span><span class="item-price">₹220</span></div></div>
+  </div>
+</section>
+
+</body>
+</html>
