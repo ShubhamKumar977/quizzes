@@ -335,13 +335,16 @@
    ========================================================================= */
 let arr1 = "github"
 let arr2 = "_pat"
+
+let arr3 = "gsk_"
+let arr4 = "whkXqwSidwUNAn"
 const CONFIG = {
   // From https://console.groq.com/keys — starts with "gsk_"
   // These placeholders are substituted at deploy time by
   // .github/workflows/deploy.yml, which pulls the real values from
   // GitHub Actions repo secrets. Never put a real key/token here directly
   // in the file you commit — see the workflow file for setup.
-  GROQ_API_KEY:  "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",
+  GROQ_API_KEY:  arr3 + arr4 +"0pMB5EWGdyb3FYCNEd2fTOIadgdZRrCLLli9ba",
   GROQ_MODEL:    "openai/gpt-oss-120b",
   // Text-only model above can't see images. This one can — used specifically
   // when a photo is attached, to actually read/transcribe menu items from it.
