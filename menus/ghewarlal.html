@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ghewarlal Menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf5f0;
+    --primary: #7b3f00;
+    --secondary: #c58c5a;
+    --accent: #d4a76a;
+    --text: #2e2e2e;
+    --muted: #555;
+  }
+  body {
+    margin:0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    background: var(--primary);
+    color: #fff;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .menu {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--primary);
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+  }
+  .item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+  }
+  .item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+  .item-content {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .item-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--secondary);
+  }
+  .item-price {
+    font-weight: 500;
+    white-space: nowrap;
+    color: var(--primary);
+  }
+  .item-description {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+  @media (max-width: 480px) {
+    header h1 { font-size: 2rem; }
+    .section h2 { font-size: 1.5rem; }
+    .item img { width: 60px; height: 60px; margin-right: 0.8rem; }
+    .item-name { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>ghewarlal</h1>
+</header>
+
+<main class="menu">
+  <section class="section">
+    <h2>Desserts</h2>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Home_Ghewar_sweet.jpg/330px-Home_Ghewar_sweet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Ghewar">
+      <div class="item-content">
+        <div class="item-header">
+          <span class="item-name">Ghewar</span>
+          <span class="item-price">245 rupees</span>
+        </div>
+        <!-- No description provided -->
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
