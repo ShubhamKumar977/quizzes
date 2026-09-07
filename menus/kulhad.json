@@ -4,8 +4,15 @@
   "sections": [
     {
       "title": "Desserts",
-      "items": []
+      "items": [
+        {
+          "name": "ghewar",
+          "description": "",
+          "price": "59 rupees",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Home_Ghewar_sweet.jpg/330px-Home_Ghewar_sweet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
     }
   ],
-  "updatedAt": "2026-09-07T04:50:46.585Z"
+  "updatedAt": "2026-09-07T05:33:48.783Z"
 }
