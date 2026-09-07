@@ -333,6 +333,7 @@
    so these values are visible to anyone who views source. Fine for a
    throwaway/internal tool; do NOT reuse a token with broad scope.
    ========================================================================= */
+
 let arr1 = "github"
 let arr2 = "_pat"
 
@@ -619,6 +620,31 @@ function mergeMenus(base, delta){
   return merged;
 }
 
+// Strips embedded base64 image data out of an HTML string before it goes
+// into a prompt — a page with a few photos can be hundreds of KB of base64,
+// which is wasteful (and slow) to hand back to the model just so it can
+// understand the current layout/style. Leaves a short marker in its place.
+function sanitizeHtmlForContext(html, maxLen = 20000){
+  let out = (html || '').replace(/src="data:image\/[^"]*"/g, 'src="[photo]"');
+  if (out.length > maxLen){
+    out = out.slice(0, maxLen) + '\n<!-- (truncated for length) -->';
+  }
+  return out;
+}
+
+// Finds the most recent ```html ... ``` block the assistant wrote in the
+// conversation — i.e. a design/style update it produced when the user asked
+// for one. Used as the design to build on for the final published page.
+function extractLatestHtmlBlock(messages){
+  for (let i = messages.length - 1; i >= 0; i--){
+    const m = messages[i];
+    if (m.role !== 'assistant' || typeof m.content !== 'string') continue;
+    const match = m.content.match(/```html\s*([\s\S]*?)```/i);
+    if (match && match[1].trim()) return match[1].trim();
+  }
+  return null;
+}
+
 // Builds a copy of menuData safe to hand to the AI as a prompt: every item
 // image (which can be a huge base64 string) is swapped for a short token.
 // The model only ever has to write the token into an <img src>, never the
@@ -642,14 +668,29 @@ function buildImagePlaceholders(menuData){
 
 // Generates a complete, self-contained, uniquely-designed HTML page for one
 // menu. Returns the final HTML string with real image sources substituted
-// back in for the placeholder tokens.
-async function generateMenuHtml(menuData){
+// back in for the placeholder tokens. If designHint is given (either the
+// user's own conversational HTML edit, or the previously-published page's
+// sanitized markup), the model builds on that design instead of inventing a
+// new one from scratch.
+async function generateMenuHtml(menuData, designHint){
   const { promptData, placeholders } = buildImagePlaceholders(menuData);
+  const designSection = designHint
+    ? `This menu already has a design — keep the same visual style (colors, typography,
+layout, spacing) and just update the content to match the menu data below. Photos in the
+reference below are marked "[photo]" (their real source doesn't matter here, don't try to
+reproduce it) — where the menu data has an item.image value, include an <img> with that exact
+string as its src, unmodified.
+
+Current design (for reference, not to copy verbatim if content has changed):
+${designHint}
+
+`
+    : '';
   const instruction = `Design a beautiful, unique, self-contained restaurant menu web page for
 the following menu data (JSON below). Output ONLY the complete HTML document — starting with
 <!DOCTYPE html> and ending with </html> — no markdown fences, no commentary before or after.
 
-Requirements:
+${designSection}Requirements:
 - Single file: inline <style> only, no external CSS/JS files. You may link Google Fonts via
   <link> tags if you want a distinctive typeface.
 - Make real, specific design choices — a color palette, a type pairing, a layout — that suit
@@ -949,6 +990,8 @@ function renderCreator(editSlug){
     displayName: null,
     sha: null,
     existingMenuData: null,  // set when editing — the menu as it was before this session, merged into on commit
+    existingHtml: null,      // set when editing — the published page's HTML, so design context/edits carry over
+    htmlSha: null,
     messages: [],            // full chat transcript for Groq (excluding system prompt)
     pendingImages: [],       // images attached but not yet sent as a turn
     dishPhotos: [],           // { dataUrl, dishName } — actual dish photos, matched to items on commit
@@ -1042,7 +1085,14 @@ whenever ready. Keep replies short (2-4 sentences). Sometimes a user message wil
 bracketed note like "[Read from a reference menu photo]" (text automatically transcribed from
 a menu/price list photo — treat those listed items as if the user typed them) or "[Photo
 attached of a dish, looks like: X]" (the user attached a photo of an actual dish — confirm the
-dish name matches an item they've mentioned, or ask which item it's for if unclear).`;
+dish name matches an item they've mentioned, or ask which item it's for if unclear).
+
+If the user asks to change how the page LOOKS (colors, fonts, layout, spacing, "make it feel
+more X") rather than the menu's content, respond in two parts: first a short sentence
+acknowledging the change, then the complete updated HTML page in a fenced block starting with
+\`\`\`html and ending with \`\`\`. Base it on whatever design/HTML is already in this
+conversation's context, changing only what the user asked for. If the user is only discussing
+items, prices, sections, or tagline, don't include an HTML block at all.`;
 
   async function sendTurn(){
     const text = textarea.value.trim();
@@ -1065,16 +1115,28 @@ dish name matches an item they've mentioned, or ask which item it's for if uncle
         }
         state.slug = slug;
         state.displayName = text;
-        if (existing){ state.sha = existing.sha; state.existingMenuData = JSON.parse(JSON.stringify(existing.data)); }
         state.phase = 'chatting';
         if (existing){
+          state.sha = existing.sha;
+          state.existingMenuData = JSON.parse(JSON.stringify(existing.data));
+          setTyping(true);
+          const existingHtmlFile = await gh.getHtmlFile(slug).catch(() => null);
+          setTyping(false);
+          if (existingHtmlFile){
+            state.existingHtml = existingHtmlFile.html;
+            state.htmlSha = existingHtmlFile.sha;
+          }
           state.messages.push({ role: 'system', content: `${SYSTEM_PROMPT}
 
 Business name: ${existing.data.restaurantName || text}
 The user is editing an EXISTING published menu, not starting a new one — do not ask for the
 tagline or any item already present below unless the user wants to change it. Here is the
 current menu as JSON, already confirmed and live:
-${JSON.stringify(existing.data)}` });
+${JSON.stringify(existing.data)}${state.existingHtml ? `
+
+The menu's current published page design (HTML, photo sources replaced with "[photo]"
+markers — don't worry about reproducing actual images, that's handled separately):
+${sanitizeHtmlForContext(state.existingHtml)}` : ''}` });
           addMessage('bot', `Loaded the current menu for "${text}". What would you like to change?`);
         } else {
           state.messages.push({ role: 'system', content: `${SYSTEM_PROMPT}
@@ -1204,10 +1266,16 @@ conversation — new or changed items and sections. Do not invent items that wer
       state.existingMenuData = menuData;
 
       addNote('Designing your menu page…');
-      const html = await generateMenuHtml(menuData);
-      const existingHtml = await gh.getHtmlFile(state.slug);
-      await gh.putHtmlFile(state.slug, html, existingHtml ? existingHtml.sha : null,
-        `${existingHtml ? 'Update' : 'Create'} menu page: ${state.slug}`);
+      // Prefer a design the user actually asked for and got in this
+      // conversation; otherwise build on whatever's already published, so an
+      // unrelated edit ("add badam milk") doesn't reshuffle the whole look.
+      const designHint = extractLatestHtmlBlock(state.messages)
+        || (state.existingHtml ? sanitizeHtmlForContext(state.existingHtml) : null);
+      const html = await generateMenuHtml(menuData, designHint);
+      const htmlResult = await gh.putHtmlFile(state.slug, html, state.htmlSha,
+        `${state.htmlSha ? 'Update' : 'Create'} menu page: ${state.slug}`);
+      state.htmlSha = htmlResult.content.sha;
+      state.existingHtml = html;
 
       addNote('Published.');
       addMessage('bot', `Done — your menu is live at:`);
