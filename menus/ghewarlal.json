@@ -1,0 +1,18 @@
+{
+  "restaurantName": "ghewarlal",
+  "tagline": "",
+  "sections": [
+    {
+      "title": "Desserts",
+      "items": [
+        {
+          "name": "Ghewar",
+          "description": "",
+          "price": "245 rupees",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Home_Ghewar_sweet.jpg/330px-Home_Ghewar_sweet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-07T05:40:42.496Z"
+}
