@@ -4,69 +4,71 @@
 <meta charset="UTF-8">
 <title>kulhad Menu</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:wght@700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#faf3e9;
+    --bg:#fff8f0;
     --card:#ffffff;
-    --primary:#5d4037;      /* earthy brown */
-    --accent:#d2691e;       /* warm amber */
-    --muted:#8d6e63;
+    --primary:#3e2723;
+    --accent:#ff7043;
+    --muted:#5d4037;
     --border:#e0c9b5;
-    --shadow:0 4px 12px rgba(0,0,0,0.08);
+    --shadow:0 3px 10px rgba(0,0,0,0.07);
+    --radius:12px;
   }
   body{
     margin:0;
-    font-family:'Source Sans Pro',sans-serif;
+    font-family:'Inter',sans-serif;
     background:var(--bg);
     color:var(--primary);
+    line-height:1.5;
   }
-  .container{
+  .wrapper{
     max-width:960px;
     margin:2rem auto;
     padding:1.5rem;
     background:var(--card);
-    border-radius:10px;
+    border-radius:var(--radius);
     box-shadow:var(--shadow);
   }
   header{
     text-align:center;
     padding:1rem 0 2rem;
-    border-bottom:3px solid var(--accent);
+    border-bottom:4px solid var(--accent);
   }
   header h1{
-    font-family:'Libre Bodoni',serif;
+    font-family:'Playfair Display',serif;
     font-size:3rem;
     margin:0;
     color:var(--primary);
   }
   header p{
-    margin:0.4rem 0 0;
+    margin:0.5rem 0 0;
     font-size:1.1rem;
     color:var(--muted);
     font-style:italic;
   }
-  section{
+  .section{
     margin-top:2rem;
   }
-  .section-title{
-    font-family:'Libre Bodoni',serif;
+  .section h2{
+    font-family:'Playfair Display',serif;
     font-size:2rem;
     color:var(--accent);
-    position:relative;
-    padding-left:1rem;
     margin-bottom:1rem;
+    position:relative;
+    padding-left:1.2rem;
   }
-  .section-title::before{
+  .section h2::before{
     content:"";
     position:absolute;
     left:0;
     top:0.3rem;
-    width:4px;
-    height:1.4rem;
+    width:6px;
+    height:1.6rem;
     background:var(--accent);
   }
-  .menu-item{
+  .item{
     display:flex;
     align-items:flex-start;
     gap:1rem;
@@ -74,77 +76,77 @@
     border-bottom:1px dotted var(--border);
     flex-wrap:wrap;
   }
-  .menu-item img{
-    width:100px;
-    height:100px;
+  .item img{
+    width:96px;
+    height:96px;
     object-fit:cover;
     border-radius:8px;
     box-shadow:var(--shadow);
     flex-shrink:0;
   }
-  .details{
+  .info{
     flex:1;
     min-width:0;
   }
-  .head{
+  .info-header{
     display:flex;
     justify-content:space-between;
-    align-items:center;
+    align-items:flex-start;
     flex-wrap:wrap;
   }
-  .name{
+  .info-header .name{
     font-weight:600;
     font-size:1.2rem;
-    color:var(--primary);
     margin:0;
+    color:var(--primary);
   }
-  .price{
+  .info-header .price{
     font-weight:600;
-    color:var(--accent);
+    color:#d32f2f;
     font-size:1.1rem;
     white-space:nowrap;
+    margin-top:0.2rem;
   }
-  .desc{
+  .description{
     margin-top:0.4rem;
     font-size:0.95rem;
     color:var(--muted);
   }
   @media(max-width:480px){
     header h1{font-size:2.4rem;}
-    .section-title{font-size:1.6rem;}
-    .menu-item{
+    .section h2{font-size:1.6rem;}
+    .item{
       flex-direction:column;
       align-items:center;
       text-align:center;
     }
-    .menu-item img{
+    .item img{
       width:80px;
       height:80px;
     }
-    .head{
+    .info-header{
       justify-content:center;
     }
-    .price{margin-top:0.3rem;}
   }
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrapper">
   <header>
     <h1>kulhad</h1>
     <p></p>
   </header>
 
-  <section>
-    <h2 class="section-title">Desserts</h2>
-    <div class="menu-item">
+  <section class="section">
+    <h2>Desserts</h2>
+    <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Home_Ghewar_sweet.jpg/330px-Home_Ghewar_sweet.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="ghewar">
-      <div class="details">
-        <div class="head">
+      <div class="info">
+        <div class="info-header">
           <p class="name">ghewar</p>
           <span class="price">₹252</span>
         </div>
-        <!-- No description provided -->
+        <!-- No description -->
       </div>
     </div>
   </section>
