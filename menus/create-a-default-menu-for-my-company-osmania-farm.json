@@ -52,8 +52,8 @@
       "items": [
         {
           "name": "Hyderabadi Biryani (Veg/Chicken)",
-          "description": "Aromatic basmati rice with saffron, nuts, and your choice of veg or chicken.",
-          "price": "₹250 / ₹300"
+          "description": "",
+          "price": "₹260 / ₹310"
         },
         {
           "name": "Bagara Baingan",
@@ -104,5 +104,5 @@
       ]
     }
   ],
-  "updatedAt": "2026-09-28T13:15:23.936Z"
+  "updatedAt": "2026-09-28T13:15:44.682Z"
 }
