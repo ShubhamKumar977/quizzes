@@ -1,0 +1,96 @@
+{
+  "restaurantName": "Create a default menu for my company osmania farm",
+  "tagline": "Taste the heritage of Hyderabad in every bite.",
+  "sections": [
+    {
+      "title": "Biscuits & Snacks",
+      "items": [
+        {
+          "name": "Osmania Biscuit",
+          "description": "Classic buttery, slightly sweet biscuit, baked to a crisp edge.",
+          "price": "₹45",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Irani_chai_and_osmania_biscuits.jpg/330px-Irani_chai_and_osmania_biscuits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Masala Peanut Crackers",
+          "description": "Spiced peanuts with a hint of chili and tamarind.",
+          "price": "₹35",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Aim_for_a_healthy_weight_%28IA_CAT31307268%29.pdf/page1-330px-Aim_for_a_healthy_weight_%28IA_CAT31307268%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Sheera Mini‑Muffins",
+          "description": "Soft semolina muffins infused with cardamom.",
+          "price": "₹40"
+        }
+      ]
+    },
+    {
+      "title": "Light Bites",
+      "items": [
+        {
+          "name": "Paneer Kebab",
+          "description": "Grilled cottage‑cheese cubes marinated in Hyderabadi spices.",
+          "price": "₹80",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Vegetarian_kebab_platter.jpg/330px-Vegetarian_kebab_platter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mirchi Bajji",
+          "description": "Large green chilies stuffed, battered, and fried.",
+          "price": "₹70",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Stuffed_mirchi_bajji_%2816164286908%29.jpg/330px-Stuffed_mirchi_bajji_%2816164286908%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Egg Curry Sliders",
+          "description": "Mini buns filled with a rich egg‑masala patty.",
+          "price": "₹90",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Egg_dainties-_how_to_cook_eggs_in_150_ways%2C_English_and_foreign_%28IA_cu31924003579863%29.pdf/page1-330px-Egg_dainties-_how_to_cook_eggs_in_150_ways%2C_English_and_foreign_%28IA_cu31924003579863%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Main Plates",
+      "items": [
+        {
+          "name": "Hyderabadi Biryani (Veg/Chicken)",
+          "description": "Aromatic basmati rice with saffron, nuts, and your choice of veg or chicken.",
+          "price": "₹250 / ₹300"
+        },
+        {
+          "name": "Bagara Baingan",
+          "description": "Tender eggplant in a creamy sesame‑coconut gravy.",
+          "price": "₹180"
+        },
+        {
+          "name": "Mutton Haleem",
+          "description": "Slow‑cooked wheat and meat stew, spiced to perfection.",
+          "price": "₹320",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Mutton_haleem.jpg/330px-Mutton_haleem.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    },
+    {
+      "title": "Beverages",
+      "items": [
+        {
+          "name": "Irani Chai",
+          "description": "Strong tea with milk, cardamom, and a dash of sugar.",
+          "price": "₹30",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Irani_chai_and_osmania_biscuits.jpg/330px-Irani_chai_and_osmania_biscuits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Lemon Mint Cooler",
+          "description": "Fresh lemon, mint, and a hint of honey.",
+          "price": "₹45",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Food_and_nutrition_%28IA_CAT71342262059%29.pdf/page1-330px-Food_and_nutrition_%28IA_CAT71342262059%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        {
+          "name": "Mango Lassi",
+          "description": "Sweet mango yogurt drink, lightly spiced.",
+          "price": "₹55",
+          "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Tasty_Mango_lassi_picture.JPG/330px-Tasty_Mango_lassi_picture.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2026-09-28T13:11:58.214Z"
+}
