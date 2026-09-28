@@ -2,70 +2,86 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Create a default menu for my company osmania farm</title>
+<title>create-a-default-menu-for-my-company-osmania-farm</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#faf4e9;
-    --primary:#8c2f39;
-    --secondary:#c44d58;
-    --accent:#f4a261;
-    --text:#3b2c2c;
-    --muted:#7a6e6e;
+    --bg:#fff8f0;
+    --primary:#7b3f00;
+    --secondary:#c75b12;
+    --accent:#e0a96d;
+    --text:#3a2c2c;
+    --muted:#6e5a5a;
+    --border:#e5d5c5;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
+  *,::before,::after{box-sizing:border-box;margin:0;padding:0;}
   body{
-    font-family:'Montserrat',sans-serif;
+    font-family:'Source Sans Pro',sans-serif;
     background:var(--bg);
     color:var(--text);
     line-height:1.6;
-    padding:1rem;
+    padding:2rem 1rem;
+    max-width:1200px;
+    margin:auto;
   }
   header{
     text-align:center;
-    margin-bottom:2rem;
+    margin-bottom:3rem;
   }
   h1{
-    font-family:'Playfair Display',serif;
-    font-size:2.5rem;
+    font-family:'Libre Baskerville',serif;
+    font-size:2.8rem;
     color:var(--primary);
-    margin-bottom:.3rem;
+    text-transform:capitalize;
+    letter-spacing:0.5px;
   }
   .tagline{
-    font-size:1.1rem;
+    font-size:1.2rem;
     color:var(--secondary);
+    margin-top:0.4rem;
   }
   .menu-section{
     margin-bottom:2.5rem;
+    border-top:2px solid var(--border);
+    padding-top:1.5rem;
   }
   .section-title{
-    font-family:'Playfair Display',serif;
-    font-size:1.8rem;
+    font-family:'Libre Baskerville',serif;
+    font-size:2rem;
     color:var(--primary);
-    border-bottom:2px solid var(--accent);
-    padding-bottom:.3rem;
     margin-bottom:1rem;
+    position:relative;
+  }
+  .section-title::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:60px;
+    height:3px;
+    background:var(--accent);
   }
   .item{
     display:flex;
     align-items:flex-start;
-    margin-bottom:1.2rem;
     gap:1rem;
+    margin-bottom:1.5rem;
   }
   .item-img{
-    flex:0 0 80px;
-    height:80px;
+    width:100px;
+    height:100px;
     object-fit:cover;
     border-radius:8px;
     border:2px solid var(--accent);
+    flex-shrink:0;
   }
   .item-details{
     flex:1;
     min-width:0;
   }
   .item-name{
-    font-weight:500;
+    font-weight:600;
     font-size:1.1rem;
     color:var(--primary);
     display:flex;
@@ -73,30 +89,30 @@
     align-items:center;
   }
   .price{
-    font-family:'Playfair Display',serif;
-    font-size:1.1rem;
+    font-family:'Libre Baskerville',serif;
+    font-size:1rem;
     color:var(--secondary);
     white-space:nowrap;
-    margin-left:1rem;
+    margin-left:0.5rem;
   }
   .item-desc{
-    font-size:.95rem;
+    font-size:0.95rem;
     color:var(--muted);
-    margin-top:.3rem;
+    margin-top:0.3rem;
   }
   @media (max-width:600px){
-    h1{font-size:2rem;}
-    .section-title{font-size:1.5rem;}
+    h1{font-size:2.2rem;}
+    .section-title{font-size:1.6rem;}
     .item{flex-direction:column;align-items:flex-start;}
     .item-img{width:100%;height:auto;}
     .item-name{flex-wrap:wrap;}
-    .price{margin-left:0;margin-top:.3rem;}
+    .price{margin-left:0;margin-top:0.3rem;}
   }
 </style>
 </head>
 <body>
 <header>
-  <h1>Create a default menu for my company osmania farm</h1>
+  <h1>create-a-default-menu-for-my-company-osmania-farm</h1>
   <p class="tagline">Taste the heritage of Hyderabad in every bite.</p>
 </header>
 
@@ -106,21 +122,18 @@
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Irani_chai_and_osmania_biscuits.jpg/330px-Irani_chai_and_osmania_biscuits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Osmania Biscuit" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Osmania Biscuit</span><span class="price">₹45</span></div>
-        <p class="item-desc">Classic buttery, slightly sweet biscuit, baked to a crisp edge.</p>
+        <div class="item-name"><span>Osmania Biscuit</span><span class="price">₹55</span></div>
       </div>
     </div>
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Aim_for_a_healthy_weight_%28IA_CAT31307268%29.pdf/page1-330px-Aim_for_a_healthy_weight_%28IA_CAT31307268%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Masala Peanut Crackers" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Masala Peanut Crackers</span><span class="price">₹35</span></div>
-        <p class="item-desc">Spiced peanuts with a hint of chili and tamarind.</p>
+        <div class="item-name"><span>Masala Peanut Crackers</span><span class="price">₹45</span></div>
       </div>
     </div>
     <div class="item">
       <div class="item-details">
-        <div class="item-name"><span>Sheera Mini‑Muffins</span><span class="price">₹40</span></div>
-        <p class="item-desc">Soft semolina muffins infused with cardamom.</p>
+        <div class="item-name"><span>Sheera Mini-Muffins</span><span class="price">₹50</span></div>
       </div>
     </div>
   </section>
@@ -130,22 +143,19 @@
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Vegetarian_kebab_platter.jpg/330px-Vegetarian_kebab_platter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Paneer Kebab" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Paneer Kebab</span><span class="price">₹80</span></div>
-        <p class="item-desc">Grilled cottage‑cheese cubes marinated in Hyderabadi spices.</p>
+        <div class="item-name"><span>Paneer Kebab</span><span class="price">₹90</span></div>
       </div>
     </div>
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Stuffed_mirchi_bajji_%2816164286908%29.jpg/330px-Stuffed_mirchi_bajji_%2816164286908%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mirchi Bajji" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Mirchi Bajji</span><span class="price">₹70</span></div>
-        <p class="item-desc">Large green chilies stuffed, battered, and fried.</p>
+        <div class="item-name"><span>Mirchi Bajji</span><span class="price">₹80</span></div>
       </div>
     </div>
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Egg_dainties-_how_to_cook_eggs_in_150_ways%2C_English_and_foreign_%28IA_cu31924003579863%29.pdf/page1-330px-Egg_dainties-_how_to_cook_eggs_in_150_ways%2C_English_and_foreign_%28IA_cu31924003579863%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Egg Curry Sliders" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Egg Curry Sliders</span><span class="price">₹90</span></div>
-        <p class="item-desc">Mini buns filled with a rich egg‑masala patty.</p>
+        <div class="item-name"><span>Egg Curry Sliders</span><span class="price">₹100</span></div>
       </div>
     </div>
   </section>
@@ -154,21 +164,30 @@
     <h2 class="section-title">Main Plates</h2>
     <div class="item">
       <div class="item-details">
-        <div class="item-name"><span>Hyderabadi Biryani (Veg/Chicken)</span><span class="price">₹250 / ₹300</span></div>
-        <p class="item-desc">Aromatic basmati rice with saffron, nuts, and your choice of veg or chicken.</p>
+        <div class="item-name"><span>Hyderabadi Biryani (Veg/Chicken)</span><span class="price">₹260 / ₹310</span></div>
       </div>
     </div>
     <div class="item">
       <div class="item-details">
-        <div class="item-name"><span>Bagara Baingan</span><span class="price">₹180</span></div>
-        <p class="item-desc">Tender eggplant in a creamy sesame‑coconut gravy.</p>
+        <div class="item-name"><span>Bagara Baingan</span><span class="price">₹190</span></div>
       </div>
     </div>
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Mutton_haleem.jpg/330px-Mutton_haleem.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mutton Haleem" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Mutton Haleem</span><span class="price">₹320</span></div>
-        <p class="item-desc">Slow‑cooked wheat and meat stew, spiced to perfection.</p>
+        <div class="item-name"><span>Mutton Haleem</span><span class="price">₹330</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7f/Hyderabadi_Veg_Biryani.jpg/330px-Hyderabadi_Veg_Biryani.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Hyderabadi Biryani (Veg)" class="item-img">
+      <div class="item-details">
+        <div class="item-name"><span>Hyderabadi Biryani (Veg)</span><span class="price">₹260</span></div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/Chicken_Hyderabadi_Biryani.JPG/330px-Chicken_Hyderabadi_Biryani.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Hyderabadi Biryani (Chicken)" class="item-img">
+      <div class="item-details">
+        <div class="item-name"><span>Hyderabadi Biryani (Chicken)</span><span class="price">₹310</span></div>
       </div>
     </div>
   </section>
@@ -178,22 +197,19 @@
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Irani_chai_and_osmania_biscuits.jpg/330px-Irani_chai_and_osmania_biscuits.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Irani Chai" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Irani Chai</span><span class="price">₹30</span></div>
-        <p class="item-desc">Strong tea with milk, cardamom, and a dash of sugar.</p>
+        <div class="item-name"><span>Irani Chai</span><span class="price">₹40</span></div>
       </div>
     </div>
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Food_and_nutrition_%28IA_CAT71342262059%29.pdf/page1-330px-Food_and_nutrition_%28IA_CAT71342262059%29.pdf.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Lemon Mint Cooler" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Lemon Mint Cooler</span><span class="price">₹45</span></div>
-        <p class="item-desc">Fresh lemon, mint, and a hint of honey.</p>
+        <div class="item-name"><span>Lemon Mint Cooler</span><span class="price">₹55</span></div>
       </div>
     </div>
     <div class="item">
       <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Tasty_Mango_lassi_picture.JPG/330px-Tasty_Mango_lassi_picture.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail" alt="Mango Lassi" class="item-img">
       <div class="item-details">
-        <div class="item-name"><span>Mango Lassi</span><span class="price">₹55</span></div>
-        <p class="item-desc">Sweet mango yogurt drink, lightly spiced.</p>
+        <div class="item-name"><span>Mango Lassi</span><span class="price">₹65</span></div>
       </div>
     </div>
   </section>
